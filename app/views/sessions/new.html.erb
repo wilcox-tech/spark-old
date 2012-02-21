@@ -1,0 +1,20 @@
+<% provide :title, "Log In" %>
+
+<h1>Log in to <%= Settings.instance_name %></h1>
+<%= form_for(:session, :url => sessions_path) do |form| %>
+  <legend>Enter your credentials below to enjoy Spark.</legend>
+    
+  <div class="field">
+    <%= form.label :username %><br/>
+    <%= form.text_field :username %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :password %><br/>
+    <%= form.password_field :password %>
+  </div>
+  
+  <%= form.submit "Log In" %>
+<% end %>
+
+<span>Do you need credentials?  Contact your project's maintainer.</span>

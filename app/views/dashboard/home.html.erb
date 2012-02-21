@@ -1,0 +1,22 @@
+<% if logged_in? %>
+<%= provide(:title, "for #{current_user.display_as}") %>
+<h1>Welcome, <%= current_user.display_as %>.</h1>
+
+<% else %>
+<%= provide(:title, 'Hello.') %>
+<h1>Hello.</h1>
+<p><%= Settings.org_name %> is using Spark, a revolutionary new portal,
+to manage their software projects.</p>
+<h3>Expecting something else?</h3>
+<ul>
+<li>Ensure your Web server settings are correct.</li>
+<li>If you've already signed in, you may need to ensure your browser accepts cookies.</li>
+<li>If you aren't expecting to see Spark, you may have reached this page in error.
+Try a <a href="https://ddg.gg/">Web search</a>.</li>
+</ul>
+<h3>Curious about Spark?</h3>
+<p>Spark is a portal written using the high-performing, expressive <a href="http://rubyonrails.org/">
+Ruby on Rails</a> framework.  It is developed as an open-source project by <a href="http://wilcox-tech.com/">
+Wilcox Technologies</a>.</p>  For more information, check it out on <a href="http://oss.wilcox-tech.com/spark/">
+the Web</a> or <a href="https://github.com/wilcox-tech/">on GitHub</a>.
+<% end %>

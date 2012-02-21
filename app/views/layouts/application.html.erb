@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spark</title>
+  <title><%= Settings.instance_name %> | <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render 'layouts/header' %>
+  <section>
+    <%= yield %>
+  </section>
+  <section id="bottom">
+    Copyright &copy; 2012 <%= Settings.org_name %>.  The contents of <%= Settings.instance_name %> may be
+    confidential and/or proprietary.  If you have any legal questions, contact your project's maintainer.
+  </section>
 </body>
 </html>

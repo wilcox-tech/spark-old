@@ -11,6 +11,7 @@ gem 'json'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.6'
+  gem 'capybara'
 end
 
 # Gems used only for assets and not required
@@ -26,6 +27,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# Used for enterprise authentication
+gem 'net-ldap'
+
+gem 'rails-settings-cached'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
