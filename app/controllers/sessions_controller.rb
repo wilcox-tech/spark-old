@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     if ldap_login(uid, params[:session][:password])
       member = Member.find_by_login(uid)
       member ||= Member.new(:login => uid,
-                            :display_as => ldap_user_attrs(uid).cn.first).save
+                            :display_as => ldap_user_attrs(uid).cn.first)
+      member.save!
       log_in member
       redirect_to '/'
     else

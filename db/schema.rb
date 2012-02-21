@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221110112) do
+ActiveRecord::Schema.define(:version => 20120221201022) do
 
   create_table "members", :force => true do |t|
     t.string   "login"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20120221110112) do
   end
 
   add_index "members", ["perma_token"], :name => "index_members_on_perma_token"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "settings", :force => true do |t|
     t.string   "var",                      :null => false

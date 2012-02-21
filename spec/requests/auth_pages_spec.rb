@@ -11,13 +11,14 @@ describe "Authentication:" do
     it { should have_selector('title', :text => "Log In") }
     describe "with a valid account" do
       before do
-        fill_in "Username", :with => 'LDAP'
+        fill_in "Username", :with => 'SparkTesting'
         fill_in "Password", :with => '36harrier)PPC603ev?'
         click_button "Log In"
       end
       
       it { should have_link('Log Out', :href => logout_path) }
       it { should_not have_link('Log In', :href => login_path) }
+      it { should_not have_selector('title', :text => "Log In") }
     end
     describe "should only allow valid attempts" do
       before do
