@@ -1,4 +1,5 @@
 <header>
+  <%= image_tag "logo.jpg", :alt => "Logo", :class => "logo" %>
   <nav>
     <% if logged_in? %>
     <%= link_to 'Log Out', logout_path %>
