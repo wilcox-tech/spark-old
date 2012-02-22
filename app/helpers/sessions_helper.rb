@@ -37,8 +37,8 @@ module SessionsHelper
     ldap.search(:base => Settings.ldap_base, :filter => filter, :attributes => attrs, :return_result => true)[0]
   end
   
-  def ldap_login(user, pass)
-    user = ldap_user_attrs(user)
+  def ldap_login(username, pass)
+    user = ldap_user_attrs(username)
     return false unless user
     ldap = ldap_gen
     ldap.auth user.dn, pass
