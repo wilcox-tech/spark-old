@@ -1,0 +1,13 @@
+<% content_for :toolbox, "<li><a href=\"/projects/new\">New project</a></li>" if can? :create, Project %>
+
+<table>
+  <thead>
+    <tr><td>Project Name</td><td>Versions</td><td>Tasks Past Due</td></tr>
+  </thead>
+<% @projects.each do |project| %>
+  <%= project.name %>
+<% end %>
+  <tfoot>
+    <tr><td colspan="3"><%= pluralize(@projects.count, "project") %></td></tr>
+  </tfoot>
+</table>

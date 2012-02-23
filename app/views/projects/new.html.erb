@@ -1,0 +1,20 @@
+<% provide :title, "New Project" %>
+
+<% form_for(:project) do |form| %>
+  <fieldset>
+    <legend>These fields are required and describe the project.</legend>
+    
+    <div class="field">
+    <%= form.label :name %><br/>
+    <%= form.text_field :name %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :desc %><br/>
+    <%= form.text_field :desc %>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>These fields, if specified, can describe the project's initial version.</legend>
+  </fieldset>
+<% end %>
