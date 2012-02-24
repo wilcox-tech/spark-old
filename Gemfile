@@ -31,6 +31,9 @@ gem 'jquery-rails'
 # Used for enterprise authentication
 gem 'net-ldap'
 
+# Used for authorisation
+gem 'cancan'
+
 gem 'rails-settings-cached'
 
 # To use ActiveModel has_secure_password

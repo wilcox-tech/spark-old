@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  include RailsSettings::Extend
+  
   validates :login, :presence => true
   
   before_save :create_perma_token
