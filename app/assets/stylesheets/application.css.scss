@@ -1,0 +1,34 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+body { padding: 0px; margin: 0px; border: 0; font-family:"Palatino"; }
+h1,h2,h3,thead { font-family:"Verdana", "Helvetica Neue"; }
+header { height:115px; line-height:115px; background:black url(headerbk.jpg) no-repeat; border-radius:0 0 1.5em 1.5em; padding:0.5em; }
+nav { float:right; a { color: white; } a:visited { color: #ccc; } }
+section#main { padding:1em; }
+section#toolbox { margin:1em 1em 0 0; padding:4px; border-radius:0 0 1em 1em; float:right; width: 20%; background: #09c; ul { list-style-image: url(arrow.gif); } h3 { background: #004; color: white; margin:-4px; padding:4px; } a { color: white; } }
+section#bottom { position: absolute; bottom: 0; }
+
+/* Form styles */
+fieldset { margin:1em; font-size:smaller; font-weight:bolder; }
+label { font-size:larger; }
+input.heading { font-size:x-large; font-family:"Palatino"; }
+
+/* Table styles */
+table { width: 100%; tr { background: white } }
+thead { tr { background: #404; color: white; td { padding: 0.5em; } } }
+tbody { tr { background: #000; color: black; :first-child { padding-left:32px; } } tr:hover { background: #8486ad url(02right.jpg); color: white; } }
+tfoot { margin: 1em; text-align: center; tr { td { background: #bbb; border-radius: 0 0 10px 10px; } } }
+
+div.error { background: #fbb; border:3px solid #a00; padding:1em; margin:1em; font-weight:bold; }

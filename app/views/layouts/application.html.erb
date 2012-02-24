@@ -8,7 +8,8 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <section>
+  <%= render 'layouts/toolbox' %>
+  <section id="main" <%= raw "style=\"width:75%;\"" if content_for? :toolbox %> >
     <%= yield %>
   </section>
   <section id="bottom">

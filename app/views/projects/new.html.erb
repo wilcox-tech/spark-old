@@ -1,20 +1,24 @@
 <% provide :title, "New Project" %>
 
-<% form_for(:project) do |form| %>
+<% provide :toolbox, "<li><a href=\"/help/creating-a-project\">New project help</a></li>".html_safe %>
+
+<%= form_for @project do |form| %>
   <fieldset>
     <legend>These fields are required and describe the project.</legend>
     
     <div class="field">
     <%= form.label :name %><br/>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :class => "heading" %>
     </div>
     
     <div class="field">
     <%= form.label :desc %><br/>
-    <%= form.text_field :desc %>
+    <%= form.text_area :desc, :size => "50x10" %>
     </div>
   </fieldset>
   <fieldset>
     <legend>These fields, if specified, can describe the project's initial version.</legend>
   </fieldset>
+  
+  <%= form.submit %>
 <% end %>

@@ -1,12 +1,18 @@
-<% content_for :toolbox, "<li><a href=\"/projects/new\">New project</a></li>" if can? :create, Project %>
+<% content_for :toolbox, "<li><a href=\"/projects/new\">New project</a></li>".html_safe if can? :create, Project %>
 
 <table>
   <thead>
     <tr><td>Project Name</td><td>Versions</td><td>Tasks Past Due</td></tr>
   </thead>
-<% @projects.each do |project| %>
-  <%= project.name %>
-<% end %>
+  <tbody>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td>not implemented</td>
+      <td>0</td>
+    </tr>
+  <% end %>
+  </tbody>
   <tfoot>
     <tr><td colspan="3"><%= pluralize(@projects.count, "project") %></td></tr>
   </tfoot>
