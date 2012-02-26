@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221201022) do
+ActiveRecord::Schema.define(:version => 20120224212526) do
 
   create_table "members", :force => true do |t|
     t.string   "login"
@@ -39,5 +39,15 @@ ActiveRecord::Schema.define(:version => 20120221201022) do
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "name"
+    t.string   "codename"
+    t.date     "target_release_date"
+    t.date     "actual_release_date"
+    t.integer  "project_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
 end
