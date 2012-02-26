@@ -1,23 +1,24 @@
-<header>
-  <%= image_tag "spark-logo.png", :alt => "Spark", :class => "logo" %>
-  <nav>
-    <% if logged_in? %>
-    <%= link_to 'Log Out', logout_path %>
-    <%= link_to 'Projects', '/projects' %>
-    <!-- <%= link_to 'All Issues', '/issues' %>
-    <%= link_to 'Overdue', '/' %> -->
-    <%= link_to 'About', '/dashboard/about' %>
-    <%= link_to 'Dashboard', '/' %>
-    <% else %>
-    <%= link_to 'Log In', login_path %>
-    <%= link_to 'Home', '/' %>
+
+  <header>
+    <%= image_tag "spark-logo.png", :alt => "Spark", :class => "logo" %>
+    <nav>
+      <% if logged_in? %>
+      <%= link_to 'Log Out', logout_path %>
+      <%= link_to 'Projects', '/projects' %>
+      <!-- <%= link_to 'All Issues', '/issues' %>
+      <%= link_to 'Overdue', '/' %> -->
+      <%= link_to 'About', '/dashboard/about' %>
+      <%= link_to 'Dashboard', '/' %>
+      <% else %>
+      <%= link_to 'Log In', login_path %>
+      <%= link_to 'Home', '/' %>
+      <% end %>
+    </nav>
+  </header>
+  <% if flash.any? %>
+  <section>
+    <% flash.each do |type,message| %>
+      <%= content_tag(:div, message, :class => "flash #{type}") %>
     <% end %>
-  </nav>
-</header>
-<% if flash.any? %>
-<section>
-  <% flash.each do |type,message| %>
-    <%= content_tag(:div, message, :class => "flash #{type}") %>
+  </section>
   <% end %>
-</section>
-<% end %>

@@ -14,21 +14,22 @@
 
 body { padding: 0px; margin: 0px; border: 0; font-family:"Palatino"; }
 h1,h2,h3,thead { font-family:"Verdana", "Helvetica Neue"; }
-header { height:115px; line-height:115px; background:black url(headerbk.jpg) no-repeat; border-radius:0 0 1.5em 1.5em; padding:0.5em; }
-nav { float:right; a { color: white; } a:visited { color: #ccc; } }
+header { height:95px; line-height:95px; background:black url(headerbk.jpg) no-repeat; border-radius:0 0 1.5em 1.5em; padding:0.5em; nav { float:right; a { color: white; } a:visited { color: #ccc; } } }
 section#main { padding:1em; }
 section#toolbox { margin:1em 1em 0 0; padding:4px; border-radius:0 0 1em 1em; float:right; width: 20%; background: #09c; ul { list-style-image: url(arrow.gif); } h3 { background: #004; color: white; margin:-4px; padding:4px; } a { color: white; } }
 section#bottom { position: absolute; bottom: 0; }
 
 /* Form styles */
 fieldset { margin:1em; font-size:smaller; font-weight:bolder; }
-label { font-size:larger; }
+label { font-size:larger; font-weight:normal; }
+label.required { font-weight:bold; }
 input.heading { font-size:x-large; font-family:"Palatino"; }
 
 /* Table styles */
+td { padding: 0.5em; }
 table { width: 100%; tr { background: white } }
-thead { tr { background: #404; color: white; td { padding: 0.5em; } } }
-tbody { tr { background: #000; color: black; :first-child { padding-left:32px; } } tr:hover { background: #8486ad url(02right.jpg); color: white; } }
+thead { tr { background: #404; color: white; } }
+tbody { tr { background: white; color: black; :first-child { padding-left:16px; } } tr:hover { background: #8486ad; > :first-child { background: url(02right.jpg) no-repeat; background-position: 0% 50%; } color: white; a { color: white; } } }
 tfoot { margin: 1em; text-align: center; tr { td { background: #bbb; border-radius: 0 0 10px 10px; } } }
 
 div.error { background: #fbb; border:3px solid #a00; padding:1em; margin:1em; font-weight:bold; }

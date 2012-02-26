@@ -1,0 +1,18 @@
+<% provide :title, @project.name %>
+
+<%
+  content_for :toolbox, "<li>Add a version</li>".html_safe if can? :edit, @project
+  content_for :toolbox, "<li>Edit project details</li>".html_safe if can? :edit, @project
+  content_for :toolbox, "<li>Remove this project</li>".html_safe if can? :destroy, @project
+%>
+
+    <h1><%= @project.name %></h1>
+    <div id="desc"><%= @project.desc %></div>
+
+    <h3>Versions</h3>
+    <dl>
+    <% @project.versions.each do |version| %>
+      <dd><%= version.name %> <%= "(#{version.codename})" if !version.codename.nil? %></dd>
+      <dt><%= "<b>Next Version For Release</b><br/>" if next_version_of @project === version %></dt>
+    <% end %>
+    </dl>

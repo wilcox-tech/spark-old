@@ -7,8 +7,10 @@
   <tbody>
   <% @projects.each do |project| %>
     <tr>
-      <td><%= project.name %></td>
-      <td>not implemented</td>
+      <td><%= link_to project.name, project %></td>
+      <td><% if project.versions.empty? %><em>none</em><% else %>
+          <%= "Next release: #{next_version_of project}" %><br/>
+          <%= "Prior release: #{prior_version_of project}" %><% end %></td>
       <td>0</td>
     </tr>
   <% end %>

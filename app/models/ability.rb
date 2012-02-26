@@ -17,7 +17,11 @@ class Ability
       return if permissions.nil?
       permissions.each do |permission|
         if permission[:subjects].nil?
-          can permission[:action].to_sym, permission[:class].constantize
+          if permission[:class] == "all"
+            can permission[:action].to_sym, :all
+          else
+            can permission[:action].to_sym, permission[:class].constantize
+          end
         else
           can permission[:action].to_sym, permission[:class].constantize, :id => permission.subjects
         end
