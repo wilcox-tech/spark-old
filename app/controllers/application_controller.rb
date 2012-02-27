@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
                      "You can't touch this."]
   
   rescue_from CanCan::AccessDenied do |exception|
+    api_error = {:error_class => "login", :error => "Invalid credentials specified."}
+    render "error", :formats => [:xml], :locals => api_error and return if request.format == :xml
+    render :json => api_error and return if request.format == :json
     flash[:error] = access_messages.sample
     redirect_to login_path and return if !logged_in?
     redirect_to root_path
