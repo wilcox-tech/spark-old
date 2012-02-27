@@ -12,5 +12,13 @@ describe Project do
     project.save.should == true
     Project.find_by_name("Something Else").should_not == nil
   end
-  it "should not allow project names to be changed to already-existing project names"
+  describe "should not allow project names to be changed to already-existing project names" do
+    p1 = Project.new(:name => "Name Change 1")
+    p1.save!
+    p2 = Project.new(:name => "Name Change 2")
+    p2.save!
+    p2.name = "Name Change 1"
+    p2.save.should == false
+    Project.find_by_name("Name Change 2").should_not == nil
+  end
 end

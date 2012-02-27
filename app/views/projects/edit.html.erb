@@ -1,0 +1,22 @@
+<% provide :title, 'Update #{@project.name}' %>
+
+<% provide :toolbox, "<li><a href=\"/help/updating-a-project\">Updating projects help</a></li>".html_safe %>
+<% provide :toolbox, "<li>#{link_to 'Back to project', @project}</li>".html_safe %>
+
+<%= form_for @project do |form| %>
+  <fieldset>
+    <legend>These fields describe the project.</legend>
+    
+    <div class="field">
+    <%= form.label :name, :class => "required" %><br/>
+    <%= form.text_field :name, :class => "heading" %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :desc, :class => "required" %><br/>
+    <%= form.text_area :desc, :size => "50x10" %>
+    </div>
+  </fieldset>
+  
+  <%= form.submit %>
+<% end %>
