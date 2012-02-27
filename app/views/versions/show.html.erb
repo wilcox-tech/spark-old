@@ -1,0 +1,15 @@
+<% provide :title, "#{@version}" %>
+
+<% provide :toolbox, "<li>#{ link_to 'Update version info', edit_version_path(@version) }</li>".html_safe if can? :edit, @version %>
+<% provide :toolbox, "<li>Add milestone</li>".html_safe if can? :create, @version %>
+<% provide :toolbox, "<li>#{ link_to 'Remove version', version_path(@version), :method => :delete }</li>".html_safe if can? :destroy, @version %>
+
+<% unless @version.codename.nil? %>
+  <h1>"<%= @version.codename %>"</h1>
+  <h2><%= @version %></h2>
+<% else %>
+  <h1><%= @version %></h1>
+<% end %>
+  
+  <h3>Overview</h3>
+  

@@ -1,5 +1,6 @@
 class Version < ActiveRecord::Base
   belongs_to :project
+  has_many :milestones
   
   validates :name, :presence => true
   

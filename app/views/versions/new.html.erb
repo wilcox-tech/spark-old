@@ -1,0 +1,22 @@
+<% provide :title, "New version for #{@project.name}" %>
+
+  <h1>Creating new version for <%= @project.name %></h1>
+  
+  <%= form_for :version, :url => project_versions_path(@project) do |form| %>
+    <input type="hidden" name="version[project_id]" value="<%= @project.id %>"/>
+    <fieldset>
+      <legend>These fields describe the version.</legend>
+      
+      <div class="field">
+        <%= form.label :codename %><br/>
+        <%= form.text_field :codename, :class => 'heading' %>
+      </div>
+      
+      <div class="field">
+        <%= form.label :name, :class => 'required' %><br/>
+        <%= form.text_field :name %>
+      </div>
+    </fieldset>
+    
+    <%= form.submit %>
+  <% end %>

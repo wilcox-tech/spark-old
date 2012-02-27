@@ -8,7 +8,7 @@ Spark::Application.routes.draw do
     resources :versions, :only => [:new, :create]
   end
   
-  resources :versions, :only => [:show, :destroy]
+  resources :versions, :only => [:edit, :update, :show, :destroy]
 
   root :to => 'dashboard#home'
   
