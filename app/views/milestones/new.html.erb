@@ -2,7 +2,7 @@
 
 <% provide :toolbox, "<li><a href=\"/help/creating-a-milestone\">New milestone help</a></li>".html_safe %>
 
-<%= form_for @milestone, :url => new_version_milestone_path(@version) do |form| %>
+<%= form_for @milestone, :url => version_milestones_path(@version) do |form| %>
   <fieldset>
     <legend>Describe the milestone.</legend>
     
@@ -19,6 +19,11 @@
     <div class="field">
     <%= form.label :completed_on %> (if applicable)<br/>
     <%= form.text_field :completed_on %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :description %><br/>
+    <%= form.text_area :description, :size => "40x10" %>
     </div>
   </fieldset>
   

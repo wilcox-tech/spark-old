@@ -12,4 +12,26 @@
 <% end %>
   
   <h3>Overview</h3>
+  <div>Total milestones: <%= @version.milestones.count %></div>
+  <div>Remaining milestones: <%= active_milestones_for(@version) %></div>
+  <%= "<div class=\"past-due\">Milestones past due: #{past_due_milestones_for(@version)}</div>".html_safe if past_due_milestones_for(@version) %>
   
+  
+  <h3>Milestones</h3>
+  <table>
+    <thead>
+      <tr><td>Name</td><td>Due by</td><td>Completed on</td></tr>
+    </thead>
+    <tbody>
+      <% @version.milestones.sort_by(&:due_by).each do |milestone| %>
+      <tr>
+        <td <%= 'class="finished"'.html_safe unless milestone.completed_on.nil? %>><%= milestone.name %></td>
+        <td <%= 'class="past-due"'.html_safe if milestone.completed_on.nil? && milestone.due_by < Date.today %>><%= milestone.due_by %></td>
+        <td><%= milestone.completed_on || '<em>Not completed</em>'.html_safe %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="3"><%= pluralize(@version.milestones.count, 'milestones') %></td></tr>
+    </tfoot>
+  </table>
