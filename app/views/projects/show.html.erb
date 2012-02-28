@@ -13,7 +13,7 @@
     <dl>
     <% @project.versions.each do |version| %>
       <dt>
-        <%= link_to version.name, version %> <%= "(#{version.codename})" if !version.codename.nil? %>
+        <%= link_to version.name, version %> <%= "(#{version.codename})" if !version.codename.empty? %>
         <%= " &mdash; <b>Next Version For Release</b><br/>".html_safe if (next_version_of @project) === version %>
         <%= " &mdash; <b>Current Release</b><br/>".html_safe if (prior_version_of @project) === version %>
       </dt>

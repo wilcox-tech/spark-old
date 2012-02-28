@@ -29,8 +29,8 @@ input.heading { font-size:x-large; font-family:"Palatino"; }
 .past-due { color: red; font-weight: bolder; }
 
 /* Table styles */
+tr.finished { text-decoration: line-through; }
 td { padding: 0.5em; }
-td.finished { text-decoration: line-through; }
 table { width: 100%; tr { background: white } }
 thead { tr { background: #404; color: white; } }
 tbody { tr { background: white; color: black; > :first-child { padding-left:32px; } } tr:hover { background: #8486ad; > :first-child { background: url(02right.jpg) no-repeat; background-position: 0% 50%; } color: white; a { color: white; } } }
