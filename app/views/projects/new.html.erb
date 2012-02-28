@@ -4,7 +4,7 @@
 
 <%= form_for @project do |form| %>
   <fieldset>
-    <legend>These fields describe the project and are required.</legend>
+    <legend>Describe the project.</legend>
     
     <div class="field">
     <%= form.label :name, :class => "required" %><br/>
@@ -17,7 +17,7 @@
     </div>
   </fieldset>
   <fieldset>
-    <legend>These fields, if specified, can describe the project's initial version.</legend>
+    <legend>Optionally, describe the project's initial version.</legend>
     <%= fields_for :version do |version_fields| %>
       <div class="field">
       <%= version_fields.label :codename %><br/>

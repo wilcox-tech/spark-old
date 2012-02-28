@@ -16,9 +16,9 @@ body { padding: 0px; margin: 0px; border: 0; font-family:"Verdana", "Helvetica N
 h1,h2,h3,thead { font-family:"Verdana", "Helvetica Neue"; }
 h1 { font-size:xx-large; }
 h2 { margin-top: 0; font-size:x-large; font-style: italic; font-weight: normal; }
-header { height:95px; line-height:95px; background:black url(headerbk.jpg) no-repeat; border-radius:0 0 1.5em 1.5em; padding:0.5em; nav { float:right; > * { margin:0.5em; } a { color: white; text-decoration: none; background: #444; padding:1em; border-radius: 1em; } a:visited { color: #ccc; } } }
+header { height:85px; line-height:85px; padding:0.5em; background:#ccc; border-bottom:0.25em #555 solid; nav { float:right; > * { margin:0.5em; } a { color: #000; text-decoration: none; background: #ccc; padding:1em; border-radius: 0.5em; } a:visited { color: #333; } a:hover { color: white;  background: #333; } } }
 section#main { padding:1em; }
-section#toolbox { margin:1em; padding:4px; border-radius:0 0 0.5em 0.5em; float:right; width: 20%; background: #09c; box-shadow: 0 5px 15px -2px #333; ul { list-style-image: url(arrow.gif); } h3 { background: #004; color: white; margin:-4px; padding:4px; } a { color: white; } }
+section#toolbox { margin:1em; padding:4px; border-radius:0 0 0.5em 0.5em; float:right; width: 20%; background: #09c; box-shadow: 0 5px 10px -2px #333; ul { list-style-image: url(arrow.gif); } h3 { background: #004; color: white; margin:-4px; padding:4px; } a { color: white; } }
 section#bottom { position: absolute; bottom: 0; margin:1em; }
 
 /* Form styles */

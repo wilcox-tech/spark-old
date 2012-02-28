@@ -1,0 +1,26 @@
+<% provide :title, "New Milestone" %>
+
+<% provide :toolbox, "<li><a href=\"/help/creating-a-milestone\">New milestone help</a></li>".html_safe %>
+
+<%= form_for @milestone, :url => new_version_milestone_path(@version) do |form| %>
+  <fieldset>
+    <legend>Describe the milestone.</legend>
+    
+    <div class="field">
+    <%= form.label :name, :class => 'required' %><br/>
+    <%= form.text_field :name, :class => 'heading' %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :due_by, :class => 'required' %><br/>
+    <%= form.text_field :due_by %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :completed_on %> (if applicable)<br/>
+    <%= form.text_field :completed_on %>
+    </div>
+  </fieldset>
+  
+  <%= form.submit %>
+<% end %>
