@@ -15,11 +15,18 @@ class VersionsController < ApplicationController
         redirect_to @project
       end
       format.json { head :ok }
-      format.xml  { head :ok}
+      format.xml  { head :ok }
     end
   end
   
+  def edit
+  end
+  
   def show
+  end
+  
+  def update
+    update_response_depending_on @version.update_attributes(params[:version]), @version
   end
   
   def destroy

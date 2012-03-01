@@ -1,2 +1,17 @@
-<h1>Milestones#show</h1>
-<p>Find me in app/views/milestones/show.html.erb</p>
+<% provide :title, @milestone.name %>
+
+<%
+  content_for :toolbox, "<li>Link requirement</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>New requirement</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>#{link_to 'Edit milestone', edit_version_milestone_path(@milestone)}</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>Set as completed</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>#{link_to 'Remove milestone', version_milestone_path(@milestone), :method => "delete"}</li>".html_safe if can? :destroy, @milestone
+  
+  provide :breadcrumbs, "#{ link_to 'Projects', projects_path } >> #{ link_to @milestone.version.project.name, @milestone.version.project } >> #{ link_to @milestone.version, @milestone.version } >>".html_safe
+%>
+
+  <h1><%= @milestone.name %></h1>
+  <div>Due by: <strong><%= @milestone.due_by %></strong></div>
+  <div><%= completion_text_for(@milestone) %></div>
+  <hr/>
+  <div><%= simple_format(@milestone.description) %></div>

@@ -1,4 +1,8 @@
+<% provide :title, 'Projects' %>
+
 <% content_for :toolbox, "<li><a href=\"/projects/new\">New project</a></li>".html_safe if can? :create, Project %>
+
+<h1>Projects</h1>
 
 <table>
   <thead>

@@ -1,0 +1,30 @@
+    <input type="hidden" name="version[project_id]" value="<%= project.id %>"/>
+    <fieldset>
+      <legend>Describe the version.</legend>
+      
+      <div class="field">
+        <%= form.label :codename %><br/>
+        <%= form.text_field :codename, :class => 'heading' %>
+      </div>
+      
+      <div class="field">
+        <%= form.label :name, :class => 'required' %><br/>
+        <%= form.text_field :name %>
+      </div>
+    </fieldset>
+    
+    <fieldset>
+      <legend>date things</legend>
+      
+      <div class="field">
+        <%= form.label :target_release_date %><br/>
+        <%= form.text_field :target_release_date %>
+      </div>
+      
+      <div class="field">
+        <%= form.label :actual_release_date %> (if applicable)<br/>
+        <%= form.text_field :actual_release_date %>
+      </div>
+    </fieldset>
+    
+    <%= form.submit %>

@@ -1,9 +1,13 @@
 <% provide :title, "#{@version}" %>
 
-<% provide :toolbox, "<li>#{ link_to 'Update version info', edit_version_path(@version) }</li>".html_safe if can? :edit, @version %>
-<% provide :toolbox, "<li>#{ link_to 'Add milestone', new_version_milestone_path(@version) }</li>".html_safe if can? :create, @version %>
-<% provide :toolbox, "<li>#{ link_to 'Remove version', version_path(@version), :method => :delete }</li>".html_safe if can? :destroy, @version %>
+<%
+  provide :toolbox, "<li>#{ link_to 'Update version info', edit_version_path(@version) }</li>".html_safe if can? :edit, @version
+  provide :toolbox, "<li>#{ link_to 'Add milestone', new_version_milestone_path(@version) }</li>".html_safe if can? :create, @version
+  provide :toolbox, "<li>#{ link_to 'Remove version', version_path(@version), :method => :delete }</li>".html_safe if can? :destroy, @version
+%>
 
+<% provide :breadcrumbs, "#{ link_to 'Projects', projects_path } >> #{ link_to @version.project.name, @version.project } >>".html_safe %>
+  
 <% unless @version.codename.empty? %>
   <h1>"<%= @version.codename %>"</h1>
   <h2><%= @version %></h2>
@@ -12,8 +16,7 @@
 <% end %>
   
   <h3>Overview</h3>
-  <div>Total milestones: <%= @version.milestones.count %></div>
-  <div>Remaining milestones: <%= active_milestones_for(@version) %></div>
+  <div>Remaining milestones: <%= active_milestones_for(@version) %> of <%= @version.milestones.count %></div>
   <%= "<div class=\"past-due\">Milestones past due: #{past_due_milestones_for(@version)}</div>".html_safe if past_due_milestones_for(@version) > 0 %>
   
   
@@ -25,7 +28,7 @@
     <tbody>
       <% @version.milestones.sort_by(&:due_by).each do |milestone| %>
       <tr <%= 'class="finished"'.html_safe unless milestone.completed_on.nil? %>>
-        <td><%= milestone.name %></td>
+        <td><%= link_to milestone.name, version_milestone_path(@version, milestone) %></td>
         <td <%= 'class="past-due"'.html_safe if milestone.completed_on.nil? && milestone.due_by < Date.today %>><%= milestone.due_by %></td>
         <td><%= milestone.completed_on || '<em>Not completed</em>'.html_safe %></td>
       </tr>

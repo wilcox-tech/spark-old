@@ -16,3 +16,7 @@
 
 # Silly Finder adding unnecessary noise
 .DS_Store
+
+# Silly gvim adding unnecessary noise
+*.swo
+*.swp

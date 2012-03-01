@@ -14,4 +14,27 @@ class ApplicationController < ActionController::Base
     redirect_to login_path and return if !logged_in?
     redirect_to root_path
   end
+  
+  def update_response_depending_on(success, model)
+    respond_to do |format|
+      if success
+        format.html do
+          flash[:success] = "#{model} has been updated successfully."
+          redirect_to model
+        end
+        format.json { head :ok }
+        format.xml  { head :ok }
+      else
+        format.html do
+          nice_errors = model.errors.full_messages.collect {|err| "<li>" + err + "</li>"}
+          flash[:error] = "<ul>#{nice_errors}</ul>".html_safe
+          render :action => "edit"
+        end
+        format.json { render :json => model.errors, :status => :unprocessable_entity }
+        format.xml  { render "error", :formats => [:xml],
+                      :locals => { :class => "params", :error => model.errors.full_messages },
+                      :status => :unprocessable_entity }
+      end
+    end
+  end
 end

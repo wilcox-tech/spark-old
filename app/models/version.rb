@@ -5,6 +5,7 @@ class Version < ActiveRecord::Base
   validates :name, :presence => true
   
   def to_s
-    "Version #{self.name} of #{self.project}"
+    return "Version #{self.name}" if self.codename.empty?
+    "#{self.codename} (#{self.name})"
   end
 end

@@ -11,6 +11,7 @@
   <%= render 'layouts/header' %>
   <%= render 'layouts/toolbox' %>
   <section id="main" <%= raw "style=\"width:75%;\"" if content_for? :toolbox %> >
+    <%= yield :breadcrumbs %>
     <%= yield %>
   </section>
   <section id="bottom">

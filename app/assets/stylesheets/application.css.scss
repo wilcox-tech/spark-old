@@ -15,10 +15,12 @@
 body { padding: 0px; margin: 0px; border: 0; font-family:"Verdana", "Helvetica Neue", sans-serif; font-size:smaller; }
 h1 { font-size:xx-large; }
 h2 { margin-top: 0; font-size:x-large; font-style: italic; font-weight: normal; }
-header { height:85px; line-height:85px; padding:0.5em; background:#ccc; border-bottom:0.25em #555 solid; nav { float:right; > * { margin:0.5em; } a { color: #000; text-decoration: none; background: #ccc; padding:1em; border-radius: 0.5em; } a:visited { color: #333; } a:hover { color: white;  background: #333; } } }
+header { height:40px; line-height:40px; padding:0.5em; background:#ccc; border-bottom:0.25em #555 solid; nav { float:right; > * { margin:0.5em; } a { text-decoration: none; background: #ccc; padding:1em; border-radius: 0.5em; } a:visited { color: #333; } a:hover { color: white;  background: #333; } } }
 section#main { padding:1em; }
 section#toolbox { margin:1em; padding:4px; border-radius:0 0 0.5em 0.5em; float:right; width: 20%; background: #09c; box-shadow: 0 5px 10px -2px #333; ul { list-style-image: url(arrow.gif); } h3 { background: #004; color: white; margin:-4px; padding:4px; } a { color: white; } }
 section#bottom { position: absolute; bottom: 0; margin:1em; }
+
+a { color: black; }
 
 /* Form styles */
 fieldset { margin:1em; font-size:smaller; font-weight:bolder; }
@@ -32,8 +34,8 @@ input.heading { font-size:x-large; font-family:"Palatino"; }
 tr.finished { text-decoration: line-through; }
 td { padding: 0.5em; }
 table { width: 100%; tr { background: white } }
-thead { tr { background: #404; color: white; } }
-tbody { tr { background: white; color: black; > :first-child { padding-left:32px; } } tr:hover { background: #8486ad; > :first-child { background: url(02right.jpg) no-repeat; background-position: 0% 50%; } color: white; a { color: white; } } }
+thead { tr { background: #004; color: white; } }
+tbody { tr { background: white; color: black; > :first-child { padding-left:16px; } } tr:hover { background: #09c; .past-due { color: pink } > :first-child { background: url(arrow.gif) no-repeat; background-position: 0% 50%; } color: white; a { color: white; } } }
 tfoot { margin: 1em; text-align: center; tr { td { background: #bbb; border-radius: 0 0 10px 10px; } } }
 
 div.error { background: #fbb; border:3px solid #a00; padding:1em; margin:1em; font-weight:bold; }

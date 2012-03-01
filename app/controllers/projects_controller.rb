@@ -30,26 +30,7 @@ class ProjectsController < ApplicationController
   end
   
   def update
-    respond_to do |format|
-      if @project.update_attributes(params[:project])
-        format.html do
-          flash[:success] = "Project updated successfully."
-          redirect_to @project
-        end
-        format.json { head :ok }
-        format.xml  { head :ok }
-      else
-        format.html do
-          nice_errors = @project.errors.full_messages.collect {|err| "<li>" + err + "</li>"}
-          flash[:error] = "<ul>#{nice_errors}</ul>".html_safe
-          render :action => "edit"
-        end
-        format.json { render :json => @project.errors, :status => :unprocessable_entity }
-        format.xml  { render "error", :formats => [:xml],
-                      :locals => { :class => "params", :error => @project.errors.full_messages },
-                      :status => :unprocessable_entity }
-      end
-    end
+    update_response_depending_on @project.update_attributes(params[:project]), @project
   end
   
   def show
