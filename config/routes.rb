@@ -1,6 +1,7 @@
 Spark::Application.routes.draw do
   get "dashboard/home"
   get "dashboard/about"
+  get "dashboard/setup_required"
   
   resources :sessions, :only => [:new, :create, :destroy]
   
@@ -9,7 +10,9 @@ Spark::Application.routes.draw do
   end
   
   resources :versions, :only => [:edit, :update, :show, :destroy] do
-    resources :milestones
+    resources :milestones do
+      put 'complete', :on => :member
+    end
   end
 
   root :to => 'dashboard#home'

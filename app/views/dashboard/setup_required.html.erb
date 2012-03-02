@@ -1,0 +1,41 @@
+<% provide :title, 'Some assembly required.' %>
+
+  <h1>It works!  Almost.</h1>
+  <p>Congratulations!  Spark is now running on your server.  But you aren't finished yet&hellip;</p>
+  <p>You need to configure Spark to use your environment's LDAP servers (or, alternatively, use
+    database-backed authentication).  Since Spark is currently still in active development, it cannot
+    offer you a form-based setup.  Run <code>rails console</code> from the directory you installed Spark
+    and configure authentication from there.</p>
+  <h2>Are you trying to use a Spark instance that was already configured?</h2>
+  <p>Something may be wrong with your database connection.  Hopefully nothing bad happened.</p>
+  <h2>Expecting something else?</h2>
+  <p>The administrator of the server you are running is responsible for its content.  Unfortunately,
+    Wilcox Technologies cannot help you with their servers.  You'll need to contact the admin of this server.</p>
+  <h2>Helpful list of configuration options</h2>
+  <dl>
+    <dt><code>Settings[:instance_name]</code></dt>
+    <dd>(string) The name of this instance.  You can set it to something like "Our Spark Portal".</dd>
+    
+    <dt><code>Settings[:org_name]</code></dt>
+    <dd>(string) The name of your organisation.  If you are a single developer, your full name.</dd>
+    
+    <dt><code>Settings[:ldap_servers]</code></dt>
+    <dd>(array) The DNS names of your LDAP servers.  Ex:  ['ldap1.wilcox-tech.net'] or
+        ['auth01.sun.com','auth02.sun.com','auth06.sun.com']</dd>
+    
+    <dt><code>Settings[:ldap_base]</code></dt>
+    <dd>(string) The base DN for user accounts.</dd>
+    
+    <dt><code>Settings[:ldap_ssl]</code></dt>
+    <dd>(boolean) Whether to use TLS encryption or not.  Surely you want to leave this as <code>true</code>.</dd>
+    
+    <dt><code>Settings[:ldap_bind_dn]</code></dt>
+    <dd>(string) The DN to bind as to search for user account information.  DO NOT provide it admin credentials!</dd>
+    
+    <dt><code>Settings[:ldap_bind_pw]</code></dt>
+    <dd>(string) The password of the binding user.  Plain-text, so don't make it important.</dd>
+    
+    <dt><code>Settings[:ldap_uid_attr]</code></dt>
+    <dd>(string) The attribute to use as the login ID.  You may need to set this to 'sAMAccountName' on Windows 2000-based
+        Active Directory, but otherwise you should leave this at the default of 'uid'.</dd>
+  </dt>
