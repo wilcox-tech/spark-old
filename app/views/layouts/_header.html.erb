@@ -3,7 +3,7 @@
     <%= image_tag "spark-logo-tiny.png", :alt => "Spark", :class => "logo" %>
     <nav>
       <% if logged_in? %>
-      <%= link_to "#{current_user.display_as} (#{current_user.login})", '/self' %>
+      <%= link_to "#{current_user}", '/self' %>
       <%= link_to 'Log Out', logout_path %>
       <%= link_to 'Projects', projects_path %>
       <!-- <%= link_to 'All Issues', '/issues' %>

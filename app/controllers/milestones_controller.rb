@@ -7,7 +7,7 @@ class MilestonesController < ApplicationController
     
     respond_to do |format|
       format.html do
-        flash[:success] = "Created milestone #{@milestone.name}."
+        flash[:success] = "Created milestone #{@milestone}."
         redirect_to version_path(@milestone.version_id)
       end
       format.json { head :ok }
@@ -22,5 +22,19 @@ class MilestonesController < ApplicationController
   end
 
   def show
+  end
+  
+  def complete
+    @milestone.completed_on = Date.today
+    @milestone.save
+    
+    respond_to do |format|
+      format.html do
+        flash[:success] = "Marked #{@milestone} as completed."
+        redirect_to version_path(@milestone.version_id)
+      end
+      format.json { head :ok }
+      format.xml  { head :ok }
+    end
   end
 end
