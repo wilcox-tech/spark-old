@@ -3,6 +3,8 @@ class Member < ActiveRecord::Base
   
   validates :login, :presence => true
   
+  attr_accessible :display_as
+  
   before_save :create_perma_token
   
   def to_s

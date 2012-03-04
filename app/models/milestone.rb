@@ -5,6 +5,8 @@ class Milestone < ActiveRecord::Base
   validates :name, :presence => true
   validates :due_by, :presence => true
   
+  attr_accessible :name, :description, :due_by, :completed_on
+  
   def to_s
     "Milestone #{self.name}"
   end

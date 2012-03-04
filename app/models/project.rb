@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
   
   has_many :versions
   
+  attr_accessible :name, :desc
+  
   def to_s
     self.name
   end
