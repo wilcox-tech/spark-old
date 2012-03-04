@@ -1,0 +1,9 @@
+<% provide :title, "Edit #{@milestone}" %>
+
+<% provide :toolbox, "<li><a href=\"/help/editing-a-milestone\">Editing milestones help</a></li>".html_safe %>
+
+  <h1>Edit <%= @milestone %></h1>
+
+  <%= form_for @milestone, :url => version_milestone_path(@milestone), :method => 'put' do |form| %>
+  <%= render 'form', :form => form %>
+  <% end %>

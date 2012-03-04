@@ -37,4 +37,12 @@ class MilestonesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def edit
+  end
+  
+  def update
+    params[:milestone].delete(:version_id)
+    update_response_depending_on @milestone.update_attributes(params[:milestone]), @milestone, version_path(@milestone.version_id)
+  end
 end

@@ -1,6 +1,6 @@
 <% provide :title, "Edit #{@version}" %>
   
-  <h1>Edit #{@version}</h1>
+  <h1>Edit <%= @version %></h1>
   
   <%= form_for :version, :url => version_path(@version), :method => 'put' do |form| %>
   <%= render 'form', :form => form, :project => @version.project %>

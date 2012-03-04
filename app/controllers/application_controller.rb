@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
   
-  def update_response_depending_on(success, model)
+  def update_response_depending_on(success, model, redir_url = model)
     respond_to do |format|
       if success
         format.html do
           flash[:success] = "#{model} has been updated successfully."
-          redirect_to model
+          redirect_to redir_url
         end
         format.json { head :ok }
         format.xml  { head :ok }

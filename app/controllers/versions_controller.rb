@@ -26,6 +26,7 @@ class VersionsController < ApplicationController
   end
   
   def update
+    params[:version].delete(:project_id)
     update_response_depending_on @version.update_attributes(params[:version]), @version
   end
   

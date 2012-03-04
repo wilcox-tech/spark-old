@@ -1,0 +1,25 @@
+  <fieldset>
+    <legend>Describe the milestone.</legend>
+    
+    <div class="field">
+    <%= form.label :name, :class => 'required' %><br/>
+    <%= form.text_field :name, :class => 'heading' %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :due_by, :class => 'required' %><br/>
+    <%= form.text_field :due_by %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :completed_on %> (if applicable)<br/>
+    <%= form.text_field :completed_on %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :description %><br/>
+    <%= form.text_area :description, :size => "40x10" %>
+    </div>
+  </fieldset>
+  
+  <%= form.submit %>
