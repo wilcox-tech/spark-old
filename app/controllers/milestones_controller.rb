@@ -3,7 +3,7 @@ class MilestonesController < ApplicationController
   
   def create
     @milestone.version_id = params[:version_id]
-    @milestone.save
+    @milestone.save!
     
     respond_to do |format|
       format.html do
@@ -19,6 +19,7 @@ class MilestonesController < ApplicationController
   end
 
   def new
+    @version = Version.find(params[:version_id])
   end
 
   def show
