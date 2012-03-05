@@ -1,5 +1,5 @@
 class VersionsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :create
   
   def new
     @project = Project.find(params[:project_id])
@@ -7,6 +7,10 @@ class VersionsController < ApplicationController
   
   def create
     @project = Project.find(params[:project_id])
+    params[:version].delete(:project_id)
+    @version = Version.new(params[:version])
+    authorize! :create, @version
+    @version.project_id = @project.id
     @version.save!
     
     respond_to do |format|
