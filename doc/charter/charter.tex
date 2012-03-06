@@ -1,0 +1,73 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt,letterpaper,twoside]{article}
+\usepackage[utf8]{inputenc}
+
+%%% PAGE DIMENSIONS
+\usepackage[papersize={8.5in,11in}]{geometry}
+\geometry{inner=0.5in,outer=1in}
+\geometry{top=1in,bottom=1in}
+\geometry{bindingoffset=0.25in}
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+%%% PACKAGES
+\usepackage{fancyhdr} % for better header/footers
+\usepackage{booktabs} % for much better looking tables
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{hyperref} % hyperlink refs in PDFs
+\hypersetup{ pdfborder = {0 0 0 0} } % get rid of the fugly border
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\fontfamily{ptm}\mdseries\upshape}
+\sectionfont{\newpage\LARGE\centering\scshape\color{Sepia}}
+\subsectionfont{\Large\scshape\color{Sepia}}
+\subsubsectionfont{\large\bfseries}
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\Large\rmfamily\bfseries\upshape\color{CadetBlue}}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+\renewcommand{\cftsubsecfont}{\rmfamily\bfseries\upshape\color{Sepia}}
+
+%%% FONT APPEARANCE
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\sfdefault}{jcl}
+\renewcommand{\ttdefault}{pcr}
+
+\renewcommand{\sectionrule}{{\color{Sepia}\rule[10pt]{\linewidth}{1pt}}}
+\newcommand{\subsectionrule}{{\color{Sepia}\rule[8pt]{\linewidth}{0.5pt}}}
+
+
+%%% Title
+
+\title{Charter \\ Spark \\ \includegraphics{logo}}
+\author{Horst Burkhardt \\ HCI Designer \\ Experience Evangelist \and Ricky Elrod \\ Programmer \and Adam LaMay \\ Manager \and Andrew Wilcox \\ Architect \\ Programmer Evangelist \and Tambra Wilcox \\ \\ QA Evangelist \and Alyx Wolcott \\ \\ OSS Evangelist}
+\date{2012-02-20 \\ Document 0.1}
+
+\begin{document}
+\maketitle
+
+%%% HEADERS & FOOTERS
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textsc{"Spark"} Charter}
+\fancyhead[RE,LO]{\thepage}
+\fancyfoot[LE,RO]{Document 0.1}
+\fancyfoot[RE,LO]{\textit{Open Source}}
+
+
+\input{revisions.tex}
+\tableofcontents
+\newpage
+\input{intro.tex}
+\input{vision.tex}
+\input{scope.tex}
+
+\end{document}

@@ -1,0 +1,40 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\section{Scope and limitations}
+\sectionrule
+
+
+\subsection{Scope of initial releases}
+\subsectionrule
+
+The initial release of Spark will be focused on performance. The most important features that we need immediately are requirements, release management, issue tracking, and downloads. These will be the very core features. Discussion and problem definition management will be of a lower priority in this release, as will the interface. CSS can be rewritten; time cannot.
+
+The initial release needs to be delievered very quickly. As we need this system urgently, the testing phase will also be the beginning of the deployment phase. This is unfortunate but necessary. Therefore, stability and maintainability are also paramount; they are secondary, however, to performance.
+
+As we expect to develop apps on top of Spark, the architecture must be primarily SOA-driven and RESTful.
+
+The initial release must support rudimentary functionality on mobile devices such as iPhone and Android. Future releases can focus on specific UX for mobiles and possibly even separate apps that use the API.
+
+
+\subsection{Scope of future releases}
+\subsectionrule
+
+After the Auctions project is completed and during the initial wave of eScape development, Spark 2.0 development shall commence. It should be delievered in the same timeframe as the first eScape clients. It must have UX as the primary focus and driver for both traditional Web as well as mobile. The discussions facet will be of medium importance in this release.
+
+Development past Spark 2.0 will be discussed using the product itself; by that time, it will be sufficiently capable of self-hosting its own management.
+
+
+\subsection{Limitations and exclusions}
+\subsectionrule
+
+Now that we know what Spark is, it is also important to know what it is not.
+
+\begin{itemize}
+\item{\textbf{Spark is \textit{not} a team management software.} \\
+	Spark is not designed to perform team management functions such as scheduling or time-tracking. We have a dedicated time-tracking software, Rachota, for this.}
+\item{\textbf{Spark is \textit{not} Nagios for software projects.} \\
+	Spark is not designed for micromanging every small detail of software projects. It is designed to provide a high-level view of project status and completion (in the Release Management facet), but it cannot provide to-the-minute status of each requirement. Issues and requirements are either completed or not completed; they do not have arbitrary percentages of completion.}
+\item{\textbf{Spark is \textit{not} a member of the eScape family!} \\
+	Spark is not designed to be cross-platform (other than the UI, which must work in multiple browsers). It will only ever be written in Ruby on Rails, and it will only ever run on \textsc{Unix} and \textsc{Unix}-like servers (not Windows). This gives us large degrees of freedom in which Ruby gems to use to aide in rapid development.}
+\end{itemize}

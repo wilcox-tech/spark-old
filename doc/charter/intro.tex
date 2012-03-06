@@ -1,0 +1,53 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\section{Business requirements}
+\sectionrule
+
+
+\subsection{Background}
+\subsectionrule
+
+At Wilcox Technologies, our business is creating software that people love. Most workers at Wilcox Technologies have some sort of programming background, even if their primary job activity is not the actual creation of software. As we continue to drive innovation in computing, we have all come to a realisation that current project management systems are not well-designed.
+
+There are many different systems on the market for managing different aspects of software projects: time management software like MS Project and OpenProj, requirements management systems from open-source to commercial to writing them down manually in AbiWord or \TeX, issue trackers like Flyspray and Redmine, and discussion systems like forums and email. All of these sytems are disparate, and are normally undertaken by different people. As a sort of case study, let us think on the FoxKit project for a moment. We had one person managing the Gantt chart in MS Project, another writing requirements in OpenOffice, another tracking and managing bugs in Flyspray, and we had everything from WordPress to Majordomo to MoinMoin to whiteboards-on-video cameras tracking information and discussions. This wastes everyone’s time and prevents communication. It makes every facet of the software project opaque; developers can’t hope to understand time management, managers can’t hope to understand issue trackers, and God help any external testers. In short, as of today, software project management is a big mess.
+
+It isn’t just us. Many software companies and open-source projects alike suffer from this same thing: it’s difficult to keep different facets of software together. This is why there are many open-source projects out there with ill-defined requirements (if any are defined at all) and why so many software startups fail.
+
+Enter Spark.
+
+
+\subsection{Business opportunity}
+\subsectionrule
+
+It is now obvious that we need a unified information system for software projects. Every single worker here has raised concerns about how our current projects are managed and how difficult it is to get information when necessary. With the increase of mobility, workers are faced with an even larger challenge: the information systems we have, like TeX and Flyspray, are very hostile to mobile devices like iPhone and Android. We can use our old rusty tools one last time, and create a usable, mobile-friendly, non-hostile single information system for all major facets of software development. These facets are: Problem Definition, Requirements Management, Release Management, Documentation, Issue Tracking, File Downloads, and Discussion.
+
+Note that as previously mentioned in Background, it isn’t just us -- we can sell our solution to other businesses, and we could provide free instances to open-source projects. This will help everyone; we can make a profit on something we had to write anyway, open-source projects can benefit from what we’ve learned, and we get a slick portal to manage our projects with.
+
+\subsubsection{Why not Redmine?}
+Some of you may be asking the question: why not just use Redmine for this? While Redmine is open-source and provides issue tracking and some limited documentation and discussion support, it is lacking in the following areas:
+
+\begin{itemize}
+\item{\textbf{It cannot manage requirements.} \\
+	This is a large, gaping hole. Issues and releases should be \textit{directly} tied to requirements.}
+\item{\textbf{Authentication is not as granular as is planned for Spark.} \\
+	Every ”facet” of every project has separate authentication requirements. While Redmine has RBAC, it isn’t as granular as Spark’s.}
+\item{\textbf{No voting.} \\
+	Issues and discussions will have the ability to be voted on (like StackOverflow). Redmine does not support this.}
+\item{\textbf{Non-customisable UI.} \\
+	All Redmine instances look the same - like Redmine instances. Spark will allow full, easy customisation of its UI.}
+\item{\textbf{No mobile support.} \\
+	There is no support for mobile devices in Redmine, which makes it difficult for contributors who are mobile.}
+\end{itemize}
+
+Of course this is not an exhaustive list. There are similar issues with Trac, though its authentication granularity is better than Redmine’s.
+
+
+\subsection{Business objectives}
+\subsectionrule
+
+\begin{itemize}
+\item{Achieve full-team collaboration in our software projects.}
+\item{Lower time-to-market by three months per project.}
+\item{Develop a reusable core that we can later sell to other businesses and provide to open-source projects.}
+\end{itemize}
