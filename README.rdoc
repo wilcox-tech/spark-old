@@ -40,7 +40,11 @@ track when you need it to.
 
 == Installation
 
-Right now, the core of Spark only supports authentication against LDAP.  A
-database authentication backend is planned for a future release.  Installation
-is fairly simple; install Spark somewhere, then edit a few settings ( either in
-the Rails console, or in file:config/initializers/setting_defaults.rb ).
+SSL is highly recommended for all instances of Spark, but is not enforced in the
+Rails code.  You should configure your Web server to serve Spark only from HTTPS;
+this configuration is beyond the scope of this document.
+
+Spark comes with a friendly, easy-to-use Web-based setup form (ala WordPress).
+Just point your browser to your new Spark instance and fill in a few details
+about your environment.
+
