@@ -3,39 +3,93 @@
   <h1>It works!  Almost.</h1>
   <p>Congratulations!  Spark is now running on your server.  But you aren't finished yet&hellip;</p>
   <p>You need to configure Spark to use your environment's LDAP servers (or, alternatively, use
-    database-backed authentication).  Since Spark is currently still in active development, it cannot
-    offer you a form-based setup.  Run <code>rails console</code> from the directory you installed Spark
-    and configure authentication from there.</p>
+    database-backed authentication).</p>
   <h2>Are you trying to use a Spark instance that was already configured?</h2>
   <p>Something may be wrong with your database connection.  Hopefully nothing bad happened.</p>
   <h2>Expecting something else?</h2>
   <p>The administrator of the server you are running is responsible for its content.  Unfortunately,
     Wilcox Technologies cannot help you with their servers.  You'll need to contact the admin of this server.</p>
-  <h2>Helpful list of configuration options</h2>
-  <dl>
-    <dt><code>Settings[:instance_name]</code></dt>
-    <dd>(string) The name of this instance.  You can set it to something like "Our Spark Portal".</dd>
+  
+  <%= form_tag dashboard_setup_path, :method => 'put' do |form| %>
+    <fieldset>
+      <legend>Core Settings</legend>
+      
+      <div class="field">
+        <%= label_tag :instance_name %><br/>
+        <%= text_field_tag :instance_name, params[:instance_name], :title => 'The name of this instance.  You can set it to something like "Our Spark Portal"' %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :org_name, 'Organisation name' %><br/>
+        <%= text_field_tag :org_name, params[:org_name], :title => 'The name of your organisation.  If you are a single developer, your full name.' %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :db_auth, 'Authentication type' %><br/>
+        <%= radio_button_tag :db_auth, 'false', true %> Use LDAP (default)
+        <%= radio_button_tag :db_auth, 'true', false %> Use database
+      </div>
+    </fieldset>
     
-    <dt><code>Settings[:org_name]</code></dt>
-    <dd>(string) The name of your organisation.  If you are a single developer, your full name.</dd>
+    <fieldset>
+      <legend>LDAP Authentication (Only if using LDAP authentication backend)</legend>
+      
+      <div class="field">
+        <%= label_tag :ldap_servers, 'LDAP servers' %> (comma-separated)<br/>
+        <%= text_field_tag :ldap_servers, params[:ldap_servers], :title => 'The DNS names of your LDAP servers.' %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :ldap_base, 'LDAP base DN' %><br/>
+        <%= text_field_tag :ldap_base, params[:ldap_base], :title => 'The base DN for user accounts.' %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :ldap_ssl, 'Use LDAP encryption?' %><br/>
+        <%= check_box_tag :ldap_ssl, '1', true %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :ldap_bind_dn, 'LDAP bind DN' %><br/>
+        <%= text_field_tag :ldap_bind_dn, params[:ldap_bind_dn], :title => 'The DN to bind as to search for user account information.  DO NOT provide it admin credentials!' %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :ldap_bind_password, 'LDAP bind password' %><br/>
+        <%= password_field_tag :ldap_bind_password %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :ldap_uid_attr, 'LDAP uid attribute' %> (if applicable)<br/>
+        <%= text_field_tag :ldap_uid_attr, params[:ldap_uid_attr], :title => 'The attribute to use as the login ID.  You may need to set this to "sAMAccountName" on Windows 2000-based Active Directory, but otherwise you should leave this blank.' %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :ldap_admin, 'LDAP administrator username' %> &mdash; This user will be granted all privileges on this Spark instance.<br/>
+        <%= text_field_tag :ldap_admin, params[:ldap_admin] %>
+      </div>
+    </fieldset>
     
-    <dt><code>Settings[:ldap_servers]</code></dt>
-    <dd>(array) The DNS names of your LDAP servers.  Ex:  ['ldap1.wilcox-tech.net'] or
-        ['auth01.sun.com','auth02.sun.com','auth06.sun.com']</dd>
+    <fieldset>
+      <legend>Administrator Credentials (Only if using database backend)</legend>
+      
+      <div class="warning">This user will have full control over the entire Spark instance.  Keep these credentials in a safe place, and don't share them.</div>
+      
+      <div class="field">
+        <%= label_tag :admin_fullname, 'Admin\'s full name' %><br/>
+        <%= text_field_tag :admin_fullname, params[:admin_fullname] %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :admin_login, 'Admin login name' %><br/>
+        <%= text_field_tag :admin_login, params[:admin_login] %>
+      </div>
+      
+      <div class="field">
+        <%= label_tag :admin_password %><br/>
+        <%= password_field_tag :admin_password %>
+      </div>
+    </fieldset>
     
-    <dt><code>Settings[:ldap_base]</code></dt>
-    <dd>(string) The base DN for user accounts.</dd>
-    
-    <dt><code>Settings[:ldap_ssl]</code></dt>
-    <dd>(boolean) Whether to use TLS or not.  Surely you want to leave this as <code>true</code>.</dd>
-    
-    <dt><code>Settings[:ldap_bind_dn]</code></dt>
-    <dd>(string) The DN to bind as to search for user account information.  DO NOT provide it admin credentials!</dd>
-    
-    <dt><code>Settings[:ldap_bind_pw]</code></dt>
-    <dd>(string) The password of the binding user.  Plain-text, so don't make it important.</dd>
-    
-    <dt><code>Settings[:ldap_uid_attr]</code></dt>
-    <dd>(string) The attribute to use as the login ID.  You may need to set this to 'sAMAccountName' on Windows 2000-based
-        Active Directory, but otherwise you should leave this at the default of 'uid'.</dd>
-  </dt>
+    <%= submit_tag 'Set up Spark' %>
+  <% end %>

@@ -31,10 +31,12 @@ module SessionsHelper
   def ldap_user_attrs(uid)
     ldap = ldap_gen
     ldap.auth Settings.ldap_bind_dn, Settings.ldap_bind_pw
-    return nil unless ldap.bind
+    raise "LDAP authentication error: Your settings are invalid" unless ldap.bind
     filter = Net::LDAP::Filter.eq(Settings.ldap_uid_attr,uid)
     attrs = ['cn','dn']
-    ldap.search(:base => Settings.ldap_base, :filter => filter, :attributes => attrs, :return_result => true)[0]
+    result = ldap.search(:base => Settings.ldap_base, :filter => filter, :attributes => attrs, :return_result => true)
+    raise "#{uid} doesn't exist in the directory." if result.nil?
+    result[0]
   end
   
   def ldap_login(username, pass)

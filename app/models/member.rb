@@ -1,9 +1,12 @@
 class Member < ActiveRecord::Base
   include RailsSettings::Extend
   
-  validates :login, :presence => true
+  has_secure_password
+  validates :login, :presence => true, :uniqueness => true
+  validates :password, :on => :create, :length => { :minimum => 8 }, :if => Proc.new { Settings.db_auth }
+  validates_presence_of :password_digest, :if => Proc.new { Settings.db_auth }
   
-  attr_accessible :display_as
+  attr_accessible :display_as, :password, :password_confirmation
   
   before_save :create_perma_token
   

@@ -2,6 +2,7 @@ Spark::Application.routes.draw do
   get "dashboard/home"
   get "dashboard/about"
   get "dashboard/setup_required"
+  put "dashboard/setup"
   
   resources :sessions, :only => [:new, :create, :destroy]
   

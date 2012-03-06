@@ -1,6 +1,10 @@
 Settings.defaults[:instance_name] = 'Wilcox Technologies Spark Portal'
 Settings.defaults[:org_name] = 'Wilcox Technologies, LLC'
 
+# Whether or not we want database-backed auth.  If true, use db / has_secure password.
+# If false, use ldap.
+Settings.defaults[:db_auth] = false
+
 # Obviously this part only work internally to W-T :)
 Settings.defaults[:ldap_servers] = ['ind-auth002.wilcox-tech.com','ind-auth001.wilcox-tech.com']
 Settings.defaults[:ldap_base] = 'ou=User Accounts,dc=wilcox-tech,dc=com'

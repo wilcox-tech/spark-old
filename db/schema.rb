@@ -10,14 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227074313) do
+ActiveRecord::Schema.define(:version => 20120305225406) do
 
   create_table "members", :force => true do |t|
     t.string   "login"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "perma_token"
     t.string   "display_as"
+    t.string   "password_digest"
   end
 
   add_index "members", ["perma_token"], :name => "index_members_on_perma_token"
