@@ -10,11 +10,11 @@
 <body>
   <%= render 'layouts/header' %>
   <%= render 'layouts/toolbox' %>
-  <section id="main" <%= raw "style=\"width:75%;\"" if content_for? :toolbox %> >
+  <section id="main" class="constraint">
     <%= yield :breadcrumbs %>
     <%= yield %>
   </section>
-  <section id="bottom">
+  <section id="bottom" class="constraint">
     &copy; 2012 <%= Settings.org_name %>.
   </section>
 </body>

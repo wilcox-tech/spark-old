@@ -1,25 +1,22 @@
-
-  <header>
-    <%= image_tag "spark-logo-tiny.png", :alt => "Spark", :class => "logo" %>
+  <header class="constraint">
+    <h1>SPARK</h1>
     <nav>
       <% if logged_in? %>
-      <%= link_to "#{current_user}", '/self' %>
-      <%= link_to 'Log Out', logout_path %>
-      <%= link_to 'Projects', projects_path %>
-      <!-- <%= link_to 'All Issues', '/issues' %>
-      <%= link_to 'Overdue', '/' %> -->
-      <%= link_to 'About', '/dashboard/about' %>
-      <%= link_to 'Dashboard', '/' %>
+        <%= link_to "#{current_user}", '/self' %>
+        <%= link_to 'Projects', projects_path %>
+        <%= link_to 'Dashboard', '/' %>
+        <%= link_to 'About', '/dashboard/about' %>
+        <%= link_to 'Log Out', logout_path %>
       <% else %>
-      <%= link_to 'Log In', login_path %>
-      <%= link_to 'Home', '/' %>
+        <%= link_to 'Home', '/' %>
+        <%= link_to 'Log In', login_path %>
       <% end %>
     </nav>
   </header>
   <% if flash.any? %>
   <section>
     <% flash.each do |type,message| %>
-      <%= content_tag(:div, message, :class => "flash #{type}") %>
+      <%= content_tag(:div, message, :class => "flash #{type} constraint") %>
     <% end %>
   </section>
   <% end %>
