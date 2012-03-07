@@ -8,6 +8,7 @@ Spark::Application.routes.draw do
   
   resources :projects do
     resources :versions, :only => [:new, :create]
+    resources :stories, :except => [:index]
   end
   
   resources :versions, :only => [:edit, :update, :show, :destroy] do

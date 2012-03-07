@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
                    :uniqueness => true
   
   has_many :versions
+  has_many :stories
   
   attr_accessible :name, :desc
   

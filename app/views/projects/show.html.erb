@@ -2,6 +2,7 @@
 
 <%
   content_for :toolbox, "<li>#{link_to 'Add a version', new_project_version_path(@project)}</li>".html_safe if can? :edit, @project
+  content_for :toolbox, "<li>#{link_to 'Add a story', new_project_story_path(@project)}</li>".html_safe if can? :create, Story
   content_for :toolbox, "<li>#{link_to 'Edit project details', edit_project_path(@project)}</li>".html_safe if can? :edit, @project
   content_for :toolbox, "<li><a href='/'>Remove this project</a></li>".html_safe if can? :destroy, @project
   
@@ -19,6 +20,16 @@
         <%= " &mdash; <b>Next Version For Release</b><br/>".html_safe if (next_version_of @project) === version %>
         <%= " &mdash; <b>Current Release</b><br/>".html_safe if (prior_version_of @project) === version %>
       </dt>
+      <% if version.actual_release_date == nil %>
+      <dd><%= active_milestones_for(version) %> milestones to implement<%= ", <span class=\"past-due\">#{past_due_milestones_for(version)} past due</span>".html_safe if (past_due_milestones_for(version) > 0)%></dd>
+      <% end %>
+    <% end %>
+    </dl>
+    
+    <h3>Stories</h3>
+    <dl>
+    <% @project.stories.each do |story| %>
+      <dt><%= link_to story.name, story %></dt>
       <dd></dd>
     <% end %>
     </dl>

@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(:version => 20120305225406) do
 
+  create_table "comments", :force => true do |t|
+    t.string   "by"
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "members", :force => true do |t|
     t.string   "login"
     t.datetime "created_at",      :null => false
@@ -50,6 +59,23 @@ ActiveRecord::Schema.define(:version => 20120305225406) do
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
+
+  create_table "stories", :force => true do |t|
+    t.string   "name"
+    t.string   "created_by"
+    t.text     "description"
+    t.string   "preconditions"
+    t.string   "postconditions"
+    t.string   "normal_flow"
+    t.string   "alternative_flows"
+    t.string   "exceptions"
+    t.integer  "priority"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "project_id"
+    t.integer  "due_in"
+    t.integer  "completed_in"
+  end
 
   create_table "versions", :force => true do |t|
     t.string   "name"
