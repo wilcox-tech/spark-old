@@ -1,30 +1,30 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-var precond_count = 0;
+var type_counts = new Array;
+type_counts["preconds"] = 0;
+type_counts["normal_flow"] = 0;
         
-function addAnotherPrecond(box_num)
+function addAnotherBox(box, type)
 {
-  var the_elem = objectFromId("preconds");
+  var the_elem = objectFromId(type);
 
-  if(box_num < precond_count) { return; }
-  precond_count += 1;
+  if(box !== null && parseInt(box.id.substring(99, type.length)) < type_counts[type]) { return; }
+  $(box).change(function() { });
+  type_counts[type] += 1;
   
   var span_num = document.createElement("span");
-  span_num.innerHTML = precond_count + ". ";
+  span_num.innerHTML = type_counts[type] + ". ";
   
   var text_box = document.createElement("input");
-  text_box.id = precond_count;
+  text_box.id = type + type_counts[type];
   text_box.type = "text";
-  text_box.name = "story[preconds][" + precond_count + "]";
-  text_box.size = 30;
+  text_box.name = "story["+type+"][" + type_counts[type] + "]";
+  text_box.size = 60;
+  $(text_box).keydown(function() { if(this.value !== "") { addAnotherBox(text_box, type); } });
   
   the_elem.appendChild(span_num);
   the_elem.appendChild(text_box);
   the_elem.appendChild(document.createElement("br"));
 }
 
-$(function() {
-  addAnotherPrecond(0);
-  $("#preconds input[type=text]").last().keydown(function() { if(this.value !== "") { addAnotherPrecond(this.id); } });
-});

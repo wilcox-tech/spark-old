@@ -18,11 +18,25 @@
     <div class="field" id="preconds" style="position:relative;">
       <script>
         // This runs at the beginning to add our first box
-        //$(function() { addAnotherPrecond(0); })
+        $(function() { addAnotherBox(null, "preconds"); });
       </script>
       <noscript>
         <p>Enter each precondition on a single line.</p>
         <%= text_area_tag 'lame_preconds', nil, :size => '40x10' %>
+      </noscript>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Describe the normal flow of this story.</legend>
+    
+    <div class="field" id="normal_flow" style="position:relative;">
+      <script>
+        $(function() { addAnotherBox(null, "normal_flow"); });
+      </script>
+      <noscript>
+        <p>Enter each step of the flow on a single line.</p>
+        <%= text_area_tag 'lame_normal_flow', nil, :size => '40x10' %>
       </noscript>
     </div>
   </fieldset>
