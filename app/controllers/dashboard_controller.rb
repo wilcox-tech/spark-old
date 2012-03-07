@@ -4,12 +4,12 @@ class DashboardController < ApplicationController
   end
   
   def setup_required
-    redirect_to '/' and return if Settings[:db_auth] or Settings[:ldap_bind_pw] != 'Change this to suit your environment!!!!'
+    redirect_to '/' and return if Settings.setup_finished
   end
   
   def setup
     # Don't allow setup to run if it's already been run once.. Talk about wanting to be owned :)
-    flash[:error] = "You can't re-run setup." and redirect_to '/' and return if Settings[:db_auth] or Settings[:ldap_bind_pw] != 'Change this to suit your environment!!!!'
+    flash[:error] = "You can't re-run setup." and redirect_to '/' and return if Settings.setup_finished
     
     Settings.org_name = params[:org_name]
     Settings.instance_name = params[:instance_name]
@@ -19,8 +19,9 @@ class DashboardController < ApplicationController
       if Settings.db_auth
         admin = Member.new(:display_as => params[:admin_fullname], :password => params[:admin_password], :password_confirmation => params[:admin_password])
         admin.login = params[:admin_login]
-        admin.settings.permissions = [{:action => :manage, :class => 'all'}]
         admin.save!
+        admin.settings.permissions = [{:action => :manage, :class => 'all'}]
+        Settings.setup_finished = true
         flash[:success] = "Added administrator #{admin}.  You may now log in."
       else
         Settings.ldap_servers = params[:ldap_servers].split(',')
@@ -32,8 +33,9 @@ class DashboardController < ApplicationController
         
         admin = Member.new(:display_as => ldap_user_attrs(params[:ldap_admin]).cn.first)
         admin.login = params[:ldap_admin]
-        admin.settings.permissions = [{:action => :manage, :class => 'all'}]
         admin.save!
+        admin.settings.permissions = [{:action => :manage, :class => 'all'}]
+        Settings.setup_finished = true
         flash[:success] = "LDAP authentication has been set up successfully, and #{admin} is an administrator.  You may now log in."
       end
     rescue

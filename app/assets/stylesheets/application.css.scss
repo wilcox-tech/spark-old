@@ -13,7 +13,7 @@
 */
 
 body { padding: 0px; margin: 0px; border: 0; font-family:"Verdana", "Helvetica Neue", sans-serif; font-size:smaller; }
-h1 { font-size:xx-large; }
+h1 { font-size:xx-large; text-shadow:5px 5px 5px #ccc; }
 h2 { margin-top: 0; font-size:x-large; font-style: italic; font-weight: normal; }
 header { height:40px; line-height:40px; padding:0.5em; background:#ccc; border-bottom:0.25em #555 solid; nav { float:right; > * { margin:0.5em; } a { text-decoration: none; background: #ccc; padding:1em; border-radius: 0.5em; } a:visited { color: #333; } a:hover { color: white;  background: #333; } } }
 section#main { padding:1em; }
