@@ -1,0 +1,51 @@
+  <fieldset>
+    <legend>Describe the basic features of this story.</legend>
+    
+    <div class="field">
+    <%= form.label :name, :class => 'required' %><br/>
+    <%= form.text_field :name, :class => 'heading' %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :description %><br/>
+    <%= form.text_area :description, :size => '60x15' %>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Describe the preconditions of this story.</legend>
+    
+    <div class="field" id="preconds" style="position:relative;">
+      <script>
+        var precond_count = 0;
+        
+        function addAnotherPrecond(box_num)
+        {
+          var the_elem = objectFromId("preconds");
+          
+          if(box_num < precond_count) { return; }
+          precond_count += 1;
+          
+          var span_num = document.createElement("span");
+          span_num.innerHTML = precond_count + ". ";
+          
+          var text_box = document.createElement("input");
+          text_box.onfocus = function () { addAnotherPrecond(precond_count); };
+          text_box.type = "text";
+          text_box.name = "story[preconds][" + precond_count + "]";
+          text_box.size = 30;
+          
+          the_elem.appendChild(span_num);
+          the_elem.appendChild(text_box);
+          the_elem.appendChild(document.createElement("br"));
+        }
+        
+        // This runs at the beginning to add our first box
+        addAnotherPrecond(0);
+      </script>
+      <noscript>
+        <p>Enter each precondition on a single line.</p>
+        <%= text_area_tag 'lame_preconds', nil, :size => '40x10' %>
+      </noscript>
+    </div>
+  </fieldset>

@@ -1,0 +1,9 @@
+<% provide :title, 'New User Story' %>
+
+<% provide :toolbox, "<li><a href=\"/help/creating-a-story\">Story creation help</a></li>".html_safe %>
+
+  <h1>New User Story</h1>
+  
+  <%= form_for @story, :url => project_stories_path(@project) do |form| %>
+  <%= render 'form', :form => form %>
+  <% end %>

@@ -13,3 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function objectFromBrokenNetscapeRenderer(obj, name)
+{
+  var x = obj.layers;
+  var foundLayer;
+  for (var i = 0; i < x.length; i += 1)
+  {
+    if(x[i].id == name)
+    {
+      foundLayer = x[i];
+    }
+    else if(x[i].layers.length)
+    {
+      var tmp = objectFromBrokenNetscapeRenderer(x[i], name);
+      if(tmp) { foundLayer = tmp; }
+    }
+  }
+  return foundLayer;
+}
+
+function objectFromId(name)
+{
+  if(document.getElementById)
+  {
+    return document.getElementById(name);
+  }
+  else if(document.all)
+  {
+    return document.all[name];
+  }
+  else if(document.layers)
+  {
+    // Netscape!  YAY!
+    return objectFromBrokenNetscapeRenderer(document,name);
+  }
+}

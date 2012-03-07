@@ -1,9 +1,11 @@
 
 <% if content_for? :toolbox %>
-  <section id="toolbox">
-    <h3>Toolbox</h3>
-    <ul>
-      <%= raw yield :toolbox %>
-    </ul>
+  <section>
+    <div id="toolbox">
+      <h3>Toolbox</h3>
+      <ul>
+        <%= raw yield :toolbox %>
+      </ul>
+    </div>
   </section>
 <% end %>
