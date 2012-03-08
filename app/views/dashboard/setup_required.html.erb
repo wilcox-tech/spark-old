@@ -1,15 +1,26 @@
 <% provide :title, 'Some assembly required.' %>
 
-  <h1>It works!  Almost.</h1>
-  <p>Congratulations!  Spark is now running on your server.  But you aren't finished yet&hellip;</p>
-  <p>You need to configure Spark to use your environment's LDAP servers (or, alternatively, use
-    database-backed authentication).</p>
-  <h2>Are you trying to use a Spark instance that was already configured?</h2>
-  <p>Something may be wrong with your database connection.  Hopefully nothing bad happened.</p>
-  <h2>Expecting something else?</h2>
-  <p>The administrator of the server you are running is responsible for its content.  Unfortunately,
-    Wilcox Technologies cannot help you with their servers.  You'll need to contact the admin of this server.</p>
+  <h1 align="center">It works!  Almost.</h1>
+
+  <div class="setupinfo">
+    <p>Congratulations!  Spark is now running on your server.  But you aren't finished yet&hellip;</p>
+    <p>You need to configure Spark to use your environment's LDAP servers (or, alternatively, use
+      database-backed authentication).</p>
+  </div>
   
+  <div class="setupinfo">
+    <h2>Are you trying to use a Spark instance that was already configured?</h2>
+    <p>Something may be wrong with your database connection.  Hopefully nothing bad happened.</p>
+  </div>
+
+  <div class="setupinfo">
+    <h2>Expecting something else?</h2>
+    <p>The administrator of the server you are running is responsible for its content.  Unfortunately,
+      Wilcox Technologies cannot help you with their servers.  You'll need to contact the admin of this server.</p>
+  </div>
+
+
+  <h2>Spark Setup</h2>
   <%= form_tag dashboard_setup_path, :method => 'put' do |form| %>
     <fieldset>
       <legend>Core Settings</legend>

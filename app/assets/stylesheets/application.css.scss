@@ -12,56 +12,70 @@
  *= require_tree .
  */
 
-body {
-    padding: 0px;
+@import url('http://fonts.googleapis.com/css?family=Asap:400,700');
+@import url(http://fonts.googleapis.com/css?family=Economica:400,700);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:700,700italic);
+
+.constraint {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+.cf:after { clear: both; }
+.cf { zoom: 1; }
+
+html, body {
     margin: 0px;
-    border: 0;
-    font-family: "Verdana", "Helvetica Neue", sans-serif;
-    font-size: smaller;
-
+    padding: 0px;
 }
 
-h1 {
-    font-size: xx-large;
-    text-shadow: 5px 5px 5px #ccc;
+body {
+    font-family: "Asap", "Verdana", "Helvetica Neue", sans-serif;
+    border-top: 10px solid #61768c;
 }
+
+input[type=text], input[type=password] { border: 1px solid #cccccc; }
+input[type=text]:focus, input[type=password]:focus { border: 1px solid #aaaaaa; }
+
+h1 { text-shadow: 5px 5px 5px #dddddd; }
 
 h2 {
-    margin-top: 0;
-    font-size: x-large;
-    font-style: italic;
+    margin-top: 0px;
     font-weight: normal;
 }
 
-header {
-    height: 40px;
-    line-height: 40px;
-    padding: 0.5em;
-    background: #ccc;
-    border-bottom: 0.25em #555 solid;
+#header {
+    height: 45px;
+    line-height: 45px;
 
+    h1 {
+        font-family: "Palatino Linotype", "Ubuntu";
+        font-style: italic;
+        font-weight: normal;
+        font-variant: small-caps;
+        float: left;
+        letter-spacing: 2px;
+        margin: 0px;
+    }
+    
     nav {
         float: right;
 
-        > * { margin: 0.5em; }
-
         a {
-            text-decoration: none;
-            background: #ccc;
-            padding: 1em;
-            border-radius: 0.5em;
-        }
-
-        a:visited { color: #333; }
-
-        a:hover {
-            color: white;
-            background: #333;
+            text-decoration: underline;
+            margin-left: 10px;
         }
     }
 }
 
-section#main { padding: 1em; }
+.setupinfo {
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+}
 
 section#toolbox {
     margin: 1em;
@@ -87,9 +101,8 @@ section#toolbox {
 }
 
 section#bottom {
-    position: relative;
-    bottom: 0;
-    margin: 1em;
+    text-align: center;
+    font-size: 0.8em;
 }
 
 .netscapeobject { position: relative; }
