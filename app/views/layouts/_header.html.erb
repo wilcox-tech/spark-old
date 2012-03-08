@@ -1,17 +1,19 @@
   <header class="constraint">
-    <h1>Spark</h1>
-    <nav>
-      <% if logged_in? %>
-        <%= link_to "#{current_user}", '/self' %>
-        <%= link_to 'Projects', projects_path %>
-        <%= link_to 'Dashboard', '/' %>
-        <%= link_to 'About', '/dashboard/about' %>
-        <%= link_to 'Log Out', logout_path %>
-      <% else %>
-        <%= link_to 'Home', '/' %>
-        <%= link_to 'Log In', login_path %>
-      <% end %>
-    </nav>
+    <div id="header">
+      <h1>Spark</h1>
+      <nav>
+        <% if logged_in? %>
+          <%= link_to "#{current_user}", '/self' %>
+          <%= link_to 'Projects', projects_path %>
+          <%= link_to 'Dashboard', '/' %>
+          <%= link_to 'About', '/dashboard/about' %>
+          <%= link_to 'Log Out', logout_path %>
+        <% else %>
+          <%= link_to 'Home', '/' %>
+          <%= link_to 'Log In', login_path %>
+        <% end %>
+      </nav>
+    </div>
   </header>
   <% if flash.any? %>
   <section>
