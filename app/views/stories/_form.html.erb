@@ -21,7 +21,7 @@
         $(function() { addAnotherBox(null, "preconds"); });
       </script>
       <noscript>
-        <p>Enter each precondition on a single line.</p>
+        <p><%= label_tag 'lame_preconds', 'Preconditions' %> (Enter each precondition on a single line.)</p>
         <%= text_area_tag 'lame_preconds', nil, :size => '40x10' %>
       </noscript>
     </div>
@@ -35,7 +35,7 @@
         $(function() { addAnotherBox(null, "normal_flow"); });
       </script>
       <noscript>
-        <p>Enter each step of the flow on a single line.</p>
+        <p><%= label_tag 'lame_normal_flow', 'Normal flow' %> (Enter each step of the flow on a single line.)</p>
         <%= text_area_tag 'lame_normal_flow', nil, :size => '40x10' %>
       </noscript>
     </div>
