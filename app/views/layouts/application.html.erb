@@ -10,7 +10,7 @@
 <body>
   <%= render 'layouts/header' %>
   <%= render 'layouts/toolbox' %>
-  <section <%= raw "style=\"width:75%;\"" if content_for? :toolbox %> >
+  <section class="constraint">
     <div id="main">
       <%= yield :breadcrumbs %>
       <%= yield %>
