@@ -27,6 +27,12 @@
 }
 .cf:after { clear: both; }
 .cf { zoom: 1; }
+.fr { float: right; }
+.fl { float: left; }
+.padbottom { margin-bottom: 10px; }
+.padtop { margin-top: 10px; }
+.seventy { width: 70%; }
+.thirty { width: 30%; }
 
 html, body {
     margin: 0px;
@@ -72,36 +78,50 @@ h2 {
     }
 }
 
+#content { border-top: 1px solid #cccccc; }
+
 .setupinfo {
     border-bottom: 1px solid #cccccc;
     margin-bottom: 10px;
 }
 
-section#toolbox {
-    margin: 1em;
-    padding: 4px;
-    border-radius: 0 0 0.5em 0.5em;
-    float: right;
-    width: 20%;
-    background: #09c;
-    box-shadow: 0 5px 10px -2px #333;
-
+#toolbox {
     ul {
-        list-style-image: url(arrow.gif);
+        margin: 0px;
+        padding: 0px;
+        clear: both;
     }
+    
+    li {
+        list-style: none;
+        background: url(image_path("arrow_right.png")) left no-repeat;
+        border-bottom: 1px solid #cccccc;
+        width: 100%;
+        font-size: 1.2em;
+        
+        a {
+            text-decoration: none;
+            display: block;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 20px; /* Arrow icon */
+        }
+    }
+
+    li:hover { background-color: #eeeeee; }
+    li:first-child { border-top: 1px solid #cccccc; }
 
     h3 {
         background: #004;
         color: white;
-        margin: -4px;
         padding: 4px;
+        margin: 0px;
     }
-
-    a { color: white; }
 }
 
 section#bottom {
     text-align: center;
+    clear: both;
     font-size: 0.8em;
 }
 

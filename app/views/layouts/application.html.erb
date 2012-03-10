@@ -9,13 +9,13 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <%= render 'layouts/toolbox' %>
-  <section class="constraint">
-    <div id="main">
+  <div id="content" class="constraint">
+    <div id="main" class="seventy fl">
       <%= yield :breadcrumbs %>
       <%= yield %>
     </div>
-  </section>
+    <%= render 'layouts/toolbox' %>
+  </div>
   <section id="bottom" class="constraint">
     &copy; 2012 <%= Settings.org_name %>.
   </section>
