@@ -4,7 +4,7 @@
   content_for :toolbox, "<li>#{link_to raw('<b>Add</b> a version'), new_project_version_path(@project)}</li>".html_safe if can? :edit, @project
   content_for :toolbox, "<li>#{link_to raw('<b>Add</b> a story'), new_project_story_path(@project)}</li>".html_safe if can? :create, Story
   content_for :toolbox, "<li>#{link_to raw('<b>Edit</b> project details'), edit_project_path(@project)}</li>".html_safe if can? :edit, @project
-  content_for :toolbox, "<li><a href='/'><b>Remove</b> this project</a></li>".html_safe if can? :destroy, @project
+  content_for :toolbox, "<li>#{link_to raw('<b>Remove</b> this project'), project_path, :confirm => 'Are you sure you want to remove this project?', :method => :delete}</li>".html_safe if can? :destroy, @project
   
   provide :breadcrumbs, "#{ link_to 'Projects', projects_path } >>".html_safe
 %>
