@@ -1,9 +1,9 @@
 <% provide :title, "#{@version}" %>
 
 <%
-  provide :toolbox, "<li>#{ link_to 'Update version info', edit_version_path(@version) }</li>".html_safe if can? :edit, @version
-  provide :toolbox, "<li>#{ link_to 'Add milestone', new_version_milestone_path(@version) }</li>".html_safe if can? :create, @version
-  provide :toolbox, "<li>#{ link_to 'Remove version', version_path(@version), :method => :delete }</li>".html_safe if can? :destroy, @version
+  provide :toolbox, "<li>#{ link_to raw('<b>Update</b> version info'), edit_version_path(@version) }</li>".html_safe if can? :edit, @version
+  provide :toolbox, "<li>#{ link_to raw('<b>Add</b> a milestone'), new_version_milestone_path(@version) }</li>".html_safe if can? :create, @version
+  provide :toolbox, "<li>#{ link_to raw('<b>Remove</b> this version'), version_path(@version), :method => :delete }</li>".html_safe if can? :destroy, @version
 %>
 
 <% provide :breadcrumbs, "#{ link_to 'Projects', projects_path } >> #{ link_to @version.project.name, @version.project } >>".html_safe %>

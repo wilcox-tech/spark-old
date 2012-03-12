@@ -1,11 +1,11 @@
 <% provide :title, @milestone.name %>
 
 <%
-  content_for :toolbox, "<li>Link requirement</li>".html_safe if can? :edit, @milestone
-  content_for :toolbox, "<li>New requirement</li>".html_safe if can? :edit, @milestone
-  content_for :toolbox, "<li>#{link_to 'Edit milestone', edit_version_milestone_path(@milestone)}</li>".html_safe if can? :edit, @milestone
-  content_for :toolbox, "<li>#{link_to 'Set as completed', complete_version_milestone_path(@milestone), :method => 'put'}</li>".html_safe if can? :edit, @milestone
-  content_for :toolbox, "<li>#{link_to 'Remove milestone', version_milestone_path(@milestone), :method => "delete"}</li>".html_safe if can? :destroy, @milestone
+  content_for :toolbox, "<li><b>Link</b> a requirement</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li><b>Add</b> a requirement</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>#{link_to raw('<b>Edit</b> this milestone'), edit_version_milestone_path(@milestone)}</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>#{link_to raw('<b>Complete</b> this milestone'), complete_version_milestone_path(@milestone), :method => 'put'}</li>".html_safe if can? :edit, @milestone
+  content_for :toolbox, "<li>#{link_to raw('<b>Remove</b> milestone'), version_milestone_path(@milestone), :method => "delete"}</li>".html_safe if can? :destroy, @milestone
   
   provide :breadcrumbs, "#{ link_to 'Projects', projects_path } >> #{ link_to @milestone.version.project.name, @milestone.version.project } >> #{ link_to @milestone.version, @milestone.version } >>".html_safe
 %>
