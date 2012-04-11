@@ -9,7 +9,7 @@
 %>
 
     <h1><%= @project.name %></h1>
-    <div id="desc"><%= @project.desc %></div>
+    <div id="desc"><%= markdownify(@project.desc) %></div>
 
     <h3>Versions</h3>
     <dl>
