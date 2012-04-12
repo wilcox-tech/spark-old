@@ -31,7 +31,7 @@ gem 'jquery-rails'
 # Used for enterprise authentication
 gem 'net-ldap'
 
-# Used for authorisation
+# Used for authorization
 gem 'cancan'
 
 gem 'rails-settings-cached'
@@ -51,4 +51,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'ruby-debug'
 
+# Markdown
 gem 'bluecloth'
+
+# Bootstrap (git)
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
