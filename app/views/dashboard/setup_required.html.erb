@@ -1,98 +1,150 @@
 <% provide :title, 'Some assembly required.' %>
 
-  <h1 align="center">It works!  Almost.</h1>
+<div class="hero-unit">
+  <h1>Welcome to Spark!</h1>
 
-  <div class="setupinfo">
-    <p>Congratulations!  Spark is now running on your server.  Now you need to set a name for this
-      Spark instance and configure how users will log in.</p>
-  </div>
+  <p>Spark is now running on your server. Now you need to set a name for this Spark instance and configure how users will log in.</p>
+
+  <hr class="soften" />
   
-  <div class="setupinfo">
-    <h2>Are you trying to use a Spark instance that was already set up?</h2>
-    <p>Something may be wrong with Spark's database connection.  Hopefully nothing bad happened.</p>
-  </div>
+  <h3>Are you trying to use a Spark instance that was already set up?</h3>
+  <p>Something may be wrong with Spark's database connection.  Hopefully nothing bad happened.</p>
 
-  <h2>Spark Setup</h2>
-  <%= form_tag dashboard_setup_path, :method => 'put' do |form| %>
-    <fieldset>
-      <legend>Core Settings</legend>
+</div>
+  
+  <%= form_tag dashboard_setup_path, :method => 'put', :class => 'form-horizontal' do |form| %>
+    <div class="span6">
+      <fieldset>
+        <legend>Core Settings</legend>
+
+        <div class="control-group">
+          <%= label_tag :instance_name, nil, :class => 'control-label' %>
+          <div class="controls">
+            <%= text_field_tag :instance_name, params[:instance_name] %>
+            <p class="help-block">The name of this Spark instance. E.g. "Our Spark Portal"</p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag :org_name, 'Organization Name', :class => 'control-label' %>
+          <div class="controls">
+            <%= text_field_tag :org_name, params[:org_name] %>
+            <p class="help-block">The name of your organization, or if you're a lone developer, your full name.</p>
+          </div>
+        </div>
+        
+      </fieldset>
       
-      <div class="field">
-        <%= label_tag :instance_name %><br/>
-        <%= text_field_tag :instance_name, params[:instance_name], :title => 'The name of your Spark instance.  You can set it to something like "Our Spark Portal"' %>
-      </div>
-      
-      <div class="field">
-        <%= label_tag :org_name, 'Organisation name' %><br/>
-        <%= text_field_tag :org_name, params[:org_name], :title => 'The name of your organisation.  If you are a single developer, your full name.' %>
-      </div>
-      
-      <div class="field">
-        <%= label_tag :db_auth, 'Authentication type' %><br/>
-        <%= radio_button_tag :db_auth, 'false' %> Use LDAP
-        <%= radio_button_tag :db_auth, 'true' %> Use database
-      </div>
-    </fieldset>
-    
-    <fieldset id="ldap-auth">
+      <fieldset id="auth-config"> 
+        <legend>How will users log in?</legend>
+
+        <div class="control-group">
+          <div class="controls">
+            <label class="radio">
+              LDAP
+              <%= radio_button_tag :db_auth, 'false', false %>
+            </label>
+
+            <label class="radio">
+              Database-stored
+              <%= radio_button_tag :db_auth, 'true', false %>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="span6">
+    <fieldset id="ldap-auth"> 
       <legend>LDAP Authentication</legend>
       
-      <div class="field">
-        <%= label_tag :ldap_servers, 'LDAP servers' %> (comma-separated)<br/>
-        <%= text_field_tag :ldap_servers, params[:ldap_servers], :title => 'The DNS names of your LDAP servers.' %>
+      <div class="control-group">
+        <%= label_tag :ldap_servers, 'LDAP Servers', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :ldap_servers, params[:ldap_servers] %>
+          <p class="help-block">The DNS names of your LDAP servers.</p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :ldap_base, 'LDAP Base DN', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :ldap_base, params[:ldap_base] %>
+          <p class="help-block">The Base DN for user accounts.</p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :ldap_ssl, 'Use LDAP encryption?', :class => 'control-label' %>
+        <div class="controls">
+          <%= check_box_tag :ldap_ssl, '1', true %>
+          <p class="help-block">LDAP SSL (LDAPS).</p>
+        </div>
       </div>
       
-      <div class="field">
-        <%= label_tag :ldap_base, 'LDAP base DN' %><br/>
-        <%= text_field_tag :ldap_base, params[:ldap_base], :title => 'The base DN for user accounts.' %>
+      <div class="control-group">
+        <%= label_tag :ldap_bind_dn, 'LDAP Bind DN', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :ldap_bind_dn, params[:ldap_bind_dn] %>
+          <p class="help-block">The DN to bind as to search for user account information.  Do <strong>not</strong> provide it admin credentials.</p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :ldap_bind_password, 'LDAP Bind Password', :class => 'control-label' %>
+        <div class="controls">
+          <%= password_field_tag :ldap_bind_password %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :ldap_uid_attr, 'LDAP UID Attribute (if applicable)', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :ldap_uid_attr, params[:ldap_uid_attr] %>
+          <p class="help-block">The attribute to use as the login ID.  You may need to set this to "sAMAccountName" on Windows 2000-based Active Directory, but otherwise you should leave this blank.</p>
+        </div>
       </div>
       
-      <div class="field">
-        <%= label_tag :ldap_ssl, 'Use LDAP encryption?' %><br/>
-        <%= check_box_tag :ldap_ssl, '1', true %>
-      </div>
-      
-      <div class="field">
-        <%= label_tag :ldap_bind_dn, 'LDAP bind DN' %><br/>
-        <%= text_field_tag :ldap_bind_dn, params[:ldap_bind_dn], :title => 'The DN to bind as to search for user account information.  DO NOT provide it admin credentials!' %>
-      </div>
-      
-      <div class="field">
-        <%= label_tag :ldap_bind_password, 'LDAP bind password' %><br/>
-        <%= password_field_tag :ldap_bind_password %>
-      </div>
-      
-      <div class="field">
-        <%= label_tag :ldap_uid_attr, 'LDAP uid attribute' %> (if applicable)<br/>
-        <%= text_field_tag :ldap_uid_attr, params[:ldap_uid_attr], :title => 'The attribute to use as the login ID.  You may need to set this to "sAMAccountName" on Windows 2000-based Active Directory, but otherwise you should leave this blank.' %>
-      </div>
-      
-      <div class="field">
-        <%= label_tag :ldap_admin, 'LDAP administrator username' %> &mdash; All privileges on this Spark instance will be granted to the user you specify.<br/>
-        <%= text_field_tag :ldap_admin, params[:ldap_admin] %>
+      <div class="control-group">
+        <%= label_tag :ldap_admin, 'LDAP Administrator Username', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :ldap_admin, params[:ldap_admin] %>
+          <p class="help-block">This user is granted all privileges within Spark.</p>
+        </div>
       </div>
     </fieldset>
     
     <fieldset id="db-auth">
       <legend>Administrator Credentials</legend>
       
-      <div class="warning">You will have full control over this Spark instance.  Keep these credentials in a safe place, and don't share them.</div>
-      
-      <div class="field">
-        <%= label_tag :admin_fullname, 'Your full name' %><br/>
-        <%= text_field_tag :admin_fullname, params[:admin_fullname] %>
+      <div class="control-group">
+        <%= label_tag :admin_fullname, 'Administrator Full Name', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :admin_fullname, params[:admin_fullname] %>
+          <p class="help-block">This user will have full control over the entire Spark instance.  Keep these credentials in a safe place, and don't share them.</p>
+        </div>
       </div>
-      
-      <div class="field">
-        <%= label_tag :admin_login, 'Your login name' %><br/>
-        <%= text_field_tag :admin_login, params[:admin_login] %>
+
+      <div class="control-group">
+        <%= label_tag :admin_login, 'Administrator Username', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :admin_login, params[:admin_login] %>
+        </div>
       </div>
-      
-      <div class="field">
-        <%= label_tag :admin_password, 'Your password' %><br/>
-        <%= password_field_tag :admin_password %>
-      </div>
+
+      <div class="control-group">
+        <%= label_tag :admin_password, 'Administrator Password', :class => 'control-label' %>
+        <div class="controls">
+          <%= password_field_tag :admin_password %>
+        </div>
+      </div>      
     </fieldset>
+    </div>
+
+    <div id="submitform" class="span12">
+      <div class="form-actions">
+        <%= submit_tag 'Set up Spark', :class => 'btn btn-primary btn-large' %>
+      </div>
+    </div>
     
-    <%= submit_tag 'Set up Spark' %>
   <% end %>

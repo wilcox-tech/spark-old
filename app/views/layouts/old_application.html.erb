@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title><%= Settings.instance_name %> | <%= yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/toolbox' %>
+  <section id="main" <%= raw "style=\"width:75%;\"" if content_for? :toolbox %> >
+    <%= yield :breadcrumbs %>
+    <%= yield %>
+  </section>
+  <section id="bottom">
+    &copy; 2012 <%= Settings.org_name %>.
+  </section>
+</body>
+</html>
