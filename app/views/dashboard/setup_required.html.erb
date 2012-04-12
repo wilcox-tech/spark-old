@@ -1,22 +1,25 @@
 <% provide :title, 'Some assembly required.' %>
 
-  <h1>It works!  Almost.</h1>
-  <p>Congratulations!  Spark is now running on your server.  But you aren't finished yet&hellip;</p>
-  <p>You need to configure Spark to use your environment's LDAP servers (or, alternatively, use
-    database-backed authentication).</p>
-  <h2>Are you trying to use a Spark instance that was already configured?</h2>
-  <p>Something may be wrong with your database connection.  Hopefully nothing bad happened.</p>
-  <h2>Expecting something else?</h2>
-  <p>The administrator of the server you are running is responsible for its content.  Unfortunately,
-    Wilcox Technologies cannot help you with their servers.  You'll need to contact the admin of this server.</p>
+  <h1 align="center">It works!  Almost.</h1>
+
+  <div class="setupinfo">
+    <p>Congratulations!  Spark is now running on your server.  Now you need to set a name for this
+      Spark instance and configure how users will log in.</p>
+  </div>
   
+  <div class="setupinfo">
+    <h2>Are you trying to use a Spark instance that was already set up?</h2>
+    <p>Something may be wrong with Spark's database connection.  Hopefully nothing bad happened.</p>
+  </div>
+
+  <h2>Spark Setup</h2>
   <%= form_tag dashboard_setup_path, :method => 'put' do |form| %>
     <fieldset>
       <legend>Core Settings</legend>
       
       <div class="field">
         <%= label_tag :instance_name %><br/>
-        <%= text_field_tag :instance_name, params[:instance_name], :title => 'The name of this instance.  You can set it to something like "Our Spark Portal"' %>
+        <%= text_field_tag :instance_name, params[:instance_name], :title => 'The name of your Spark instance.  You can set it to something like "Our Spark Portal"' %>
       </div>
       
       <div class="field">
@@ -26,13 +29,13 @@
       
       <div class="field">
         <%= label_tag :db_auth, 'Authentication type' %><br/>
-        <%= radio_button_tag :db_auth, 'false', true %> Use LDAP (default)
-        <%= radio_button_tag :db_auth, 'true', false %> Use database
+        <%= radio_button_tag :db_auth, 'false' %> Use LDAP
+        <%= radio_button_tag :db_auth, 'true' %> Use database
       </div>
     </fieldset>
     
-    <fieldset id="ldap-auth"> 
-      <legend>LDAP Authentication (Only if using LDAP authentication backend)</legend>
+    <fieldset id="ldap-auth">
+      <legend>LDAP Authentication</legend>
       
       <div class="field">
         <%= label_tag :ldap_servers, 'LDAP servers' %> (comma-separated)<br/>
@@ -65,28 +68,28 @@
       </div>
       
       <div class="field">
-        <%= label_tag :ldap_admin, 'LDAP administrator username' %> &mdash; This user will be granted all privileges on this Spark instance.<br/>
+        <%= label_tag :ldap_admin, 'LDAP administrator username' %> &mdash; All privileges on this Spark instance will be granted to the user you specify.<br/>
         <%= text_field_tag :ldap_admin, params[:ldap_admin] %>
       </div>
     </fieldset>
     
     <fieldset id="db-auth">
-      <legend>Administrator Credentials (Only if using database backend)</legend>
+      <legend>Administrator Credentials</legend>
       
-      <div class="warning">This user will have full control over the entire Spark instance.  Keep these credentials in a safe place, and don't share them.</div>
+      <div class="warning">You will have full control over this Spark instance.  Keep these credentials in a safe place, and don't share them.</div>
       
       <div class="field">
-        <%= label_tag :admin_fullname, 'Admin\'s full name' %><br/>
+        <%= label_tag :admin_fullname, 'Your full name' %><br/>
         <%= text_field_tag :admin_fullname, params[:admin_fullname] %>
       </div>
       
       <div class="field">
-        <%= label_tag :admin_login, 'Admin login name' %><br/>
+        <%= label_tag :admin_login, 'Your login name' %><br/>
         <%= text_field_tag :admin_login, params[:admin_login] %>
       </div>
       
       <div class="field">
-        <%= label_tag :admin_password %><br/>
+        <%= label_tag :admin_password, 'Your password' %><br/>
         <%= password_field_tag :admin_password %>
       </div>
     </fieldset>
