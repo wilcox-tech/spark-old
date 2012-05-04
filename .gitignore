@@ -9,10 +9,12 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/config/database.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/public/assets
 
 # Silly Finder adding unnecessary noise
 .DS_Store
@@ -20,3 +22,11 @@
 # Silly gvim adding unnecessary noise
 *.swo
 *.swp
+
+# Silly emacs adding unnecessary noise
+*~
+*#
+*.#*
+
+# Silly Xcode project adding unnecessary noise
+/Spark Portal/

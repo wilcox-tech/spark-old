@@ -1,0 +1,6 @@
+# Ignore the TeX output / sync files
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
