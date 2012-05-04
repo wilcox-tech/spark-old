@@ -13,10 +13,10 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
-    <link href="images/favicon.ico" rel="shortcut icon">
-    <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="favicon.ico" rel="shortcut icon">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
   </head>
   <body>
 
@@ -31,9 +31,15 @@
           <a class="brand" href="#">Spark</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <% if logged_in? %>
+                <li><%= link_to 'Dashboard', '/' %></li>
+                <li><%= link_to 'Projects', projects_path %></li>
+                <li><%= link_to 'Log Out', logout_path %></li>
+                <li><%= link_to "#{current_user}", '/self' %></li>
+              <% else %>
+                <li><%= link_to 'Home', '/' %></li>
+                <li><%= link_to 'Log In', login_path %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
