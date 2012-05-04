@@ -19,7 +19,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: # postgres or mysql or whatever you like
+  database: # db name
+  username: # username
+  password: # secret
   pool: 5
-  timeout: 5000
+  host: # server name
