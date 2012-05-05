@@ -58,7 +58,18 @@
     <div class="container">
       <div class="content">
         <div class="row">
-          <%= yield %>
+          <% if content_for? :toolbox %>
+            <div class="span9">
+              <%= yield %>
+            </div>
+            <div class="span3">
+              <ul>
+                <%= raw yield :toolbox %>
+              </ul>
+            </div>
+          <% else %>
+            <%= yield %>
+          <% end %>
         </div><!--/row-->
       </div><!--/content-->
 
