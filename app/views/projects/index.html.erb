@@ -4,12 +4,12 @@
 
 <h1>Projects</h1>
 
-<table>
+<table class="table table-condensed table-striped">
   <thead>
     <tr><td>Project Name</td><td>Versions</td><td>Tasks Past Due</td></tr>
   </thead>
   <tbody>
-  <% @projects.each do |project| %>
+  <% @projects.order("name").each do |project| %>
     <tr>
       <td><%= link_to project.name, project %></td>
       <td><% if project.versions.empty? %><em>none</em><% else %>
