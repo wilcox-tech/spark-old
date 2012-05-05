@@ -1,5 +1,4 @@
 <% if logged_in? %>
-<%= provide(:title, "for #{current_user.display_as}") %>
 <h1>Welcome, <%= current_user.display_as %>.</h1>
 
 <% else %>
