@@ -6,8 +6,15 @@
 
 <table class="table table-condensed table-striped">
   <thead>
-    <tr><td>Project Name</td><td>Versions</td><td>Tasks Past Due</td></tr>
+    <tr>
+      <th>Project Name</th>
+      <th>Versions</th>
+      <th>Tasks Past Due</th>
+    </tr>
   </thead>
+  <tfoot>
+    <tr><td colspan="3"><%= pluralize(@projects.count, "project") %></td></tr>
+  </tfoot>
   <tbody>
   <% @projects.order("name").each do |project| %>
     <tr>
@@ -19,7 +26,4 @@
     </tr>
   <% end %>
   </tbody>
-  <tfoot>
-    <tr><td colspan="3"><%= pluralize(@projects.count, "project") %></td></tr>
-  </tfoot>
 </table>
