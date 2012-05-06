@@ -10,9 +10,9 @@
   
 <% unless @version.codename.empty? %>
   <h1>"<%= @version.codename %>"</h1>
-  <h2><%= @version %></h2>
+  <h2><%= @version.project.name %> <%= @version.name %></h2>
 <% else %>
-  <h1><%= @version %></h1>
+  <h1><%= @version.project.name %> <%= @version.name %></h1>
 <% end %>
   
   <h3>Overview</h3>
