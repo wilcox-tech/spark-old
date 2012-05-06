@@ -57,6 +57,13 @@
 
     <div class="container">
       <div class="content">
+        <% if flash.any? %>
+          <div class="row">
+            <% flash.each do |type,message| %>
+              <%= content_tag(:div, message, :class => "alert alert-#{type}") %>
+            <% end %>
+          </div>
+        <% end %>
         <div class="row">
           <% if content_for? :toolbox %>
             <div class="span9">
