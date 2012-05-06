@@ -3,20 +3,26 @@
 <% provide :toolbox, "<li><a href=\"/help/updating-a-project\">Updating projects help</a></li>".html_safe %>
 <% provide :toolbox, "<li>#{link_to 'Back to project', @project}</li>".html_safe %>
 
-<%= form_for @project do |form| %>
+<%= form_for @project, :html => {:class => 'form-horizontal'} do |form| %>
   <fieldset>
     <legend>Describe the project.</legend>
     
-    <div class="field">
-    <%= form.label :name, :class => "required" %><br/>
-    <%= form.text_field :name, :class => "heading" %>
+    <div class="control-group">
+      <%= form.label :name, :class => "control-label required" %>
+      <div class="controls">
+        <%= form.text_field :name, :class => "heading" %>
+      </div>
     </div>
     
-    <div class="field">
-    <%= form.label :desc, :class => "required" %><br/>
-    <%= form.text_area :desc, :size => "50x10" %>
+    <div class="control-group">
+      <%= form.label :desc, :class => "control-label required" %>
+      <div class="controls">
+        <%= form.text_area :desc, :size => "50x10" %>
+      </div>
     </div>
   </fieldset>
-  
-  <%= form.submit %>
+
+  <div class="form-actions">
+    <%= form.submit :class => "btn btn-primary" %>
+  </div>
 <% end %>
