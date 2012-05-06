@@ -1,25 +1,36 @@
   <fieldset>
     <legend>Describe the milestone.</legend>
     
-    <div class="field">
-    <%= form.label :name, :class => 'required' %><br/>
-    <%= form.text_field :name, :class => 'heading' %>
+    <div class="control-group">
+      <%= form.label :name, :class => 'control-label required' %>
+      <div class="controls">
+        <%= form.text_field :name, :class => 'heading' %>
+      </div>
     </div>
     
-    <div class="field">
-    <%= form.label :due_by, :class => 'required' %><br/>
-    <%= form.text_field :due_by %>
+    <div class="control-group">
+      <%= form.label :due_by, :class => 'control-label required' %>
+      <div class="controls">
+        <%= form.text_field :due_by %>
+      </div>
     </div>
     
-    <div class="field">
-    <%= form.label :completed_on %> (if applicable)<br/>
-    <%= form.text_field :completed_on %>
+    <div class="control-group">
+      <%= form.label :completed_on, :class => 'control-label' %> (if applicable)
+      <div class="controls">
+        <%= form.text_field :completed_on %>
+      </div>
     </div>
     
-    <div class="field">
-    <%= form.label :description %><br/>
-    <%= form.text_area :description, :size => "40x10" %>
+    <div class="control-group">
+      <%= form.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_area :description, :size => '40x10' %>
+      </div>
     </div>
-  </fieldset>
   
-  <%= form.submit %>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>

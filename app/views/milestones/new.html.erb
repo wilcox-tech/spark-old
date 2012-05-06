@@ -4,6 +4,6 @@
 
   <h1>Create a milestone for <%= @version %></h1>
 
-  <%= form_for @milestone, :url => version_milestones_path(@version) do |form| %>
+  <%= form_for @milestone, :url => version_milestones_path(@version), :html => { :class => 'form-horizontal' } do |form| %>
   <%= render 'form', :form => form %>
   <% end %>
