@@ -2,6 +2,6 @@
 
   <h1>Creating new version for <%= @project.name %></h1>
   
-  <%= form_for :version, :url => project_versions_path(@project) do |form| %>
+  <%= form_for :version, :url => project_versions_path(@project), :html => { :class => "form-horizontal" } do |form| %>
   <%= render 'form', :form => form, :project => @project %>
   <% end %>

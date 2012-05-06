@@ -2,29 +2,37 @@
     <fieldset>
       <legend>Describe the version.</legend>
       
-      <div class="field">
-        <%= form.label :codename %><br/>
-        <%= form.text_field :codename, :class => 'heading' %>
+      <div class="control-group">
+        <%= form.label :codename, :class => "control-label" %>
+        <div class="controls">
+          <%= form.text_field :codename, :class => "heading" %>
+        </div>
       </div>
       
-      <div class="field">
-        <%= form.label :name, :class => 'required' %><br/>
-        <%= form.text_field :name %>
+      <div class="control-group">
+        <%= form.label :name, :class => "control-label required" %>
+        <div class="controls">
+          <%= form.text_field :name %>
+        </div>
       </div>
     </fieldset>
     
     <fieldset>
-      <legend>date things</legend>
-      
-      <div class="field">
-        <%= form.label :target_release_date %><br/>
-        <%= form.text_field :target_release_date %>
+      <div class="control-group">
+        <%= form.label :target_release_date, :class => "control-label" %>
+        <div class="controls">
+          <%= form.text_field :target_release_date %>
+        </div>
       </div>
       
-      <div class="field">
-        <%= form.label :actual_release_date %> (if applicable)<br/>
-        <%= form.text_field :actual_release_date %>
+      <div class="control-group">
+        <%= form.label :actual_release_date, :class => "control-label" %> (if applicable)
+        <div class="controls">
+          <%= form.text_field :actual_release_date %>
+        </div>
       </div>
     </fieldset>
-    
-    <%= form.submit %>
+
+    <div class="form-actions">
+      <%= form.submit :class => "btn btn-primary" %>
+    </div>
